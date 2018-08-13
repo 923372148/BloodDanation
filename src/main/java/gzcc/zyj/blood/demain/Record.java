@@ -17,9 +17,18 @@ public class Record extends BaseEntity {
     private String  time;
     private String bloodtype;
     private String ifdonate;
-    private String ifcard;
+    private String donoridcard;
     private String name;
-    private String  ml;
+
+    public int getMl() {
+        return ml;
+    }
+
+    public void setMl(int ml) {
+        this.ml = ml;
+    }
+
+    private int ml;
 
     public String getPlace() {
         return place;
@@ -41,6 +50,14 @@ public class Record extends BaseEntity {
         return bloodtype;
     }
 
+    public String getDonoridcard() {
+        return donoridcard;
+    }
+
+    public void setDonoridcard(String donoridcard) {
+        this.donoridcard = donoridcard;
+    }
+
     public void setBloodtype(String bloodtype) {
         this.bloodtype = bloodtype;
     }
@@ -53,13 +70,7 @@ public class Record extends BaseEntity {
         this.ifdonate = ifdonate;
     }
 
-    public String getIfcard() {
-        return ifcard;
-    }
 
-    public void setIfcard(String ifcard) {
-        this.ifcard = ifcard;
-    }
 
     public String getName() {
         return name;
@@ -69,13 +80,7 @@ public class Record extends BaseEntity {
         this.name = name;
     }
 
-    public String getMl() {
-        return ml;
-    }
 
-    public void setMl(String ml) {
-        this.ml = ml;
-    }
 
     public Donor getDonor() {
         return donor;

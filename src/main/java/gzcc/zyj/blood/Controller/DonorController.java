@@ -2,9 +2,11 @@ package gzcc.zyj.blood.Controller;
 
 
 import gzcc.zyj.blood.demain.Donor;
+import gzcc.zyj.blood.demain.Placetime;
 import gzcc.zyj.blood.demain.Record;
 
 import gzcc.zyj.blood.joggle.DonorRepoistory;
+import gzcc.zyj.blood.joggle.PlaceRepoistory;
 import gzcc.zyj.blood.joggle.RecordRepoistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +23,89 @@ public class DonorController {
     private DonorRepoistory donorRepoistory ;
 @Autowired
 private RecordRepoistory recordRepoistory ;
-
+    @Autowired
+    private PlaceRepoistory placeRepoistory ;
 
 
 
     @RequestMapping (value = "Donor/findbyid")
     @ResponseBody
     public Donor finddone(String  donor_id){
-        return donorRepoistory .findOne(donor_id);
+       Donor donor =donorRepoistory .findOne(donor_id);
 
+
+        return donor;
+
+    }
+    @RequestMapping (value = "Donor/findbyxingming")
+    @ResponseBody
+    public Donor finddonexingming(String  dxingming){
+
+
+
+        return donorRepoistory .findByDxingming(dxingming );
+
+
+
+    }
+    @RequestMapping (value = "Donor/findbyidcard")
+    @ResponseBody
+    public Donor finddoneidcard(String  didcard){
+
+
+
+        return donorRepoistory .findByDidcard(didcard );
+
+
+
+    }
+
+
+
+
+
+
+    @RequestMapping (value = "Donor/findall")
+    @ResponseBody
+    public List<Donor> finddall(){
+
+
+
+        return donorRepoistory .findAll() ;
+
+    }
+    @RequestMapping (value = "Donor/findbyplacetime")
+    @ResponseBody
+    public List<Donor > findplacedone(String  placetime_id){
+     return donorRepoistory.findByPlacetime_id(placetime_id );
+
+    }
+    @RequestMapping (value = "Donor/deleteplace")
+    @ResponseBody
+    public boolean delete(String  donor_id){
+        Donor donor =donorRepoistory .findOne(donor_id);
+        Placetime placetime =placeRepoistory .findOne(donor .getPlacetime() .getId() );
+        int sum1=placetime .getSum()-1 ;
+        placetime .setSum(sum1 );
+        placeRepoistory .save(placetime );
+donor .setPlacetime(null);
+donorRepoistory .save(donor );
+
+        return true;
+
+    }
+    @RequestMapping(value = "Donor/modify")
+    @ResponseBody
+public boolean Modify(Donor donor)
+    {
+        System .out .print(donor );
+        Donor donor1 =donorRepoistory .findOne(donor.getId() );
+        donor1 .setDpassword(donor.getDpassword() ) ;
+        donor1 .setDxingming(donor .getDxingming() );
+        donor1 .setDidcard(donor .getDidcard() );
+       donor1 .setDtelphone(donor .getDtelphone() );
+        donorRepoistory .save(donor1);
+        return  true;
     }
 
 
@@ -51,6 +127,9 @@ donor .setDname(aname);
 
         return x;
     }
+
+
+
 
     @RequestMapping(value = "User/regist")
     @ResponseBody

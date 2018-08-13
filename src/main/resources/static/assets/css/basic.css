@@ -9,19 +9,19 @@ body {
 
 #wrapper {
     width: 100%;
-    background: #202020;
+    background: #D0C0C0;
 }
 
 #page-wrapper {
     padding: 15px 15px;
     min-height: 600px;
-    background: #F3F3F3;
+    background:#D0C0C0;
 }
 
 #page-inner {
     width: 100%;
     margin: 10px 20px 10px 0px;
-    background-color: #fff!important;
+    background-color:#D0C0C0;
     padding: 10px;
     min-height: 1200px;
 }

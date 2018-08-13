@@ -1,5 +1,6 @@
 package gzcc.zyj.blood.demain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import gzcc.zyj.blood.demain.entity.BaseEntity;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -20,6 +21,15 @@ public class Placetime   extends BaseEntity {
     private String starttime;
     private String  endtime;
 private String leader;
+private int sum;
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
 
     public String getLeader() {
         return leader;
@@ -83,6 +93,7 @@ private String leader;
     @ManyToMany
     private List<Employee> employees=new ArrayList<>();
 @OneToMany
+@JsonIgnore
 @JoinColumn(name="placetimeId")
     private List<Donor> donors =new ArrayList<>() ;
 

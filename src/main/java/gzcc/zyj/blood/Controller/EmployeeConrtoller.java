@@ -1,8 +1,11 @@
 package gzcc.zyj.blood.Controller;
 
+import gzcc.zyj.blood.demain.Donor;
 import gzcc.zyj.blood.demain.Employee;
+import gzcc.zyj.blood.demain.Placetime;
 import gzcc.zyj.blood.demain.Role;
 import gzcc.zyj.blood.joggle.EmployeeRepoistory;
+import gzcc.zyj.blood.joggle.PlaceRepoistory;
 import gzcc.zyj.blood.joggle.RoleRepoistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +23,8 @@ public class EmployeeConrtoller {
     private EmployeeRepoistory  employeeRepoistory ;
 @Autowired
     private RoleRepoistory roleRepoistory ;
+    @Autowired
+    private PlaceRepoistory  placeRepoistory ;
 
     @PostMapping("Employee/save")
     @ResponseBody
@@ -48,7 +53,18 @@ public  Employee findone(String  employees_id){
         return employeeRepoistory .findOne(employees_id) ;
 
 }
+    @RequestMapping (value = "Employee/findplace")
+    @ResponseBody
+    public  List<Placetime > findonor(String  employees_id){
+      return placeRepoistory .findByEmployees_id(employees_id );
 
+    }
+    @RequestMapping (value = "Employee/findbyplaceid")
+    @ResponseBody
+    public  List<Employee> findpeople(String  placetimes_id){
+        return employeeRepoistory .findByPlacetimes_id(placetimes_id ) ;
+
+    }
 
     @RequestMapping(value = "Employee/regist")
     @ResponseBody
@@ -153,6 +169,22 @@ public  Employee findone(String  employees_id){
         else
         {return false;}
     }
+    @RequestMapping(value = "Role/findrole")
+    @ResponseBody
+    public String FRole(String employees_id) {
+
+        List<Role> role=roleRepoistory .findByEmployees_id(employees_id );
+System .out.print(role);
+        if(role.size()<=0) {
+
+            return null;
+        }
+      String sa= role.get(0).getRolename();
+        System .out .print(sa);
+        return sa;
+
+
+    }
     @RequestMapping("Role/delete")
     @ResponseBody
     public Boolean delete(String id)
@@ -165,9 +197,21 @@ public  Employee findone(String  employees_id){
     @ResponseBody
     public Boolean deleteemplofromrole(String roles_id,String  employees_id){
         employeeRepoistory .deleteemlofromrole(roles_id,employees_id) ;
+
+if(  employeeRepoistory .findOne(employees_id ).getRoles() .size() >0){
+    return false ;
+}
+
+
         return true;
     }
-
+    @RequestMapping("Role/deleteemplone")
+    @ResponseBody
+    public Boolean deleteemplofromrole2(String  employees_id){
+        Employee employee =employeeRepoistory .findOne(employees_id );
+        employeeRepoistory .deleteemlofromrole(employee .getRoles() .get(0).getId() ,employees_id) ;
+        return true;
+    }
 
 
 }

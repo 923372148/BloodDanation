@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>index</title>
+<title>查询</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </head>
-<body style="color:#350808;background-color: rgba(62, 16, 16,0.39);">
+<body style="color:#350808;background-color: rgba(62, 16, 16,0.39);" >
 		<!--start-header-section-->
 	<div class="header">
 		<div class="container">
@@ -44,19 +44,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</button>
 					</div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-						<div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						  <ul class="nav navbar-nav cl-effect-16">
-							<li class="active"><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav cl-effect-16">
+								<li ><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
 
-							 <li class="dropdown">
-							  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
-							  <ul class="dropdown-menu">
-								 <li><a href="toplace.html">活动报名</a></li>
+								<li >
+									<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="toplace.html">活动报名</a></li>
 
-								<li><a href="modify.html">修改地点</a></li>
-							  </ul>
-							</li>
-								<li ><a href="news.html">查询我的献血记录</a></li>
+										<li><a href="modify.html">修改地点</a></li>
+									</ul>
+								</li>
+
+								<li class="dropdown active"><a href="news.html">查询我的献血记录</a></li>
 								<li><a href="tips.html">献血注意事项</a></li>
 								<li><a href="mynews.html">我的信息</a></li>
 							</ul>
@@ -84,47 +85,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<!--</div>-->
 	<!--</div>-->
 <!--gallery-->
+		<form class="form-inline">
+			<div class="form-group input-group-sm">
+				<label for="idcard">请填写身份证</label>
+				<input type="text" class="form-control" id="idcard">
+				<a ><button id="yes1" type="button" class="btn btn-info "onclick="search()">查询</button></a>
+			</div>
 
-		<div  class="feature">
-			<div class="container">
-				<h3>献血光荣</h3>
-				<div class="feature-main">
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">1</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="index.html">无偿献血系统</a></h4>
-							<p>为祖国献血事业出一份力量，您的举手之劳可以拯救更多的同胞</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">2</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="tips.html">您可以在注册后前往活动地点报名</a></h4>
-							<p>报名需要提供身份证，电话号码等信息，也请确保您的年龄在18周岁以上</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">3</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="tips.html">请认真观看献血注意事项</a></h4>
-							<p>献血者累计献血八百毫升以下，自献血之日起五年内临床用血，可以累计按其献血量的三倍免费用血；自献血之日起五年后临床用血，可以累计按其献血量等量免费用血。</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+
+
+		</form>
+
+		<div class="col-md-12" >
+			<div class="table-responsive">
+				<table id="tplace" class="table">
+					<thead>
+
+					</thead>
+					<tbody id="data_tb">
+
+					</tbody>
+				</table>
 			</div>
 		</div>
-
-
+		<!--/.ROW-->
 
 
 
@@ -164,7 +148,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-
+									<div class="checkbox">
+										<label>
+											<input type="checkbox">请记住我
+										</label>
+										<a class="remb">忘记密码？</a>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -229,9 +218,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col-sm-offset-2 col-sm-10">
 									<div class="checkbox">
 										<label>
-
+											<input type="checkbox">请记住我
 										</label>
-
+										<a class="remb">忘记密码？</a>
 									</div>
 								</div>
 							</div>
@@ -259,8 +248,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 var   user_id= localStorage.getItem("userid");
-
-
 if(user_id!=="" || user_id!==null)
 {
 
@@ -270,15 +257,24 @@ if(user_id!=="" || user_id!==null)
     x.innerHTML = "Hi," + u1name+" ! ";
     x.style.color="#337ab7";
 }
+if(!user_id||user_id=="" || user_id==null)
+{
+    alert("请先注册登录");
+    window.location.href="index.html"
+}
+
+
 console.log(user_id);
-		function Login(){
+
+function Login(){
 		if(user_id!=="" && user_id!==null)
 		{
 		alert("请先退出");
 
 		}
 		else {
-		//
+		//            document .getElementById("loginbtn").value=userName ;
+		//            $("h4").html(userName );
 		$("#mymodal").modal();
 		$("#lgbtn").bind('click', function () {
 		var userName = $("#input_Lname ").val();
@@ -313,7 +309,7 @@ console.log(user_id);
 		if (data == "4") {
 		alert("登录失败。密码错误");
 		}
-	else	if (data == "3") {
+		if (data == "3") {
 		alert("登录失败，用户名不存在");
 		}
 		else {
@@ -364,24 +360,18 @@ console.log(user_id);
             var xingming= document.getElementById("input_name").value;
             var u1=document.getElementById("zhname").value;
 
-                       var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-            if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(usertelphone))) {
-                alert("不是完整的11位手机号或者正确的手机号前七位");
 
-            }
-            else if (userName == "" || userPassword == "" ||useridcard== "") {
-                alert("不能有空");
-            }
+console.log(userName );
+		//console.log(donor);
+           // console.log(u1 );
 
-            else  if(reg.test(useridcard ) === false)
-            {
+		//遍历
 
-                alert("身份证输入不合法");
-            }
-
-
-
-            else {
+		//遍历
+		if (userName == "" || userPassword == "" ||useridcard== "") {
+		alert("不能有空");
+		}
+		else {
 		//$.ajaxSettings.async = false;
 
 		$(function () {
@@ -447,6 +437,97 @@ console.log(user_id);
                 location.reload();
 
             }
+
+
+            function search() {
+		    var idcard=document .getElementById ("idcard").value;
+		    console .log(idcard );
+
+			$.ajax({
+
+                url: "Record/findidcard",
+                type: 'POST',
+                dataType: 'json',
+      data: {
+          donoridcard: idcard
+       },
+                success: function (data) {
+
+                    console.log(data);
+                    //   document.getElementById("havedoneNum").innerHTML = data.length;
+                    var tb = document.getElementById("tplace");
+                    $("#tplace tr").empty();
+                    var tr=tb.insertRow(tb.rows.length);
+                    tr.innerHTML+="<th>" +"序号"+"</th>";
+                    tr.innerHTML+="<th>" +"献血者"+"</th>";
+                    tr.innerHTML+="<th>" +"献血量（毫升）"+"</th>";
+
+
+					tr.innerHTML+="<th>" +"献血地点"+"</th>";
+
+                    if(data.length>0){
+                        for (var i = 0; i < data.length; i++) {
+                            var j = i + 1;
+                            var row = tb.insertRow(tb.rows.length);
+                            row.innerHTML += "<td>" + j + "</td>";
+
+                            row.innerHTML += "<td>" + data[i].name+ "</td>";
+
+                            row.innerHTML += "<td>" + data[i].ml+ "</td>";
+                            row.innerHTML += "<td>" + data[i].place+ "</td>";
+//
+
+//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
+//                row.innerHTML += "<td>" + data[i].time + "</td>";
+                        }
+
+                    }
+                },
+                error: function (data) {
+                    alert("身份证格式错误或者未查询到");
+                }
+
+
+
+
+			});
+            }
+    function newt(id){
+        console.log(id);
+
+        $.ajax({
+            url: 'Place/savedonor',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                placetime_id:id,
+               donor_id:user_id
+
+            },
+            cache: false,
+            success: function (data) {
+                alert ("申请成功");
+                if(data==false)
+                {
+                    alert("失败！您已经有报名献血地点了,前往个人信息查看");
+                    window.location.href="mynews.html";
+
+                }
+
+
+
+            },
+            error: function (data) {
+                alert("失败");
+            }
+        })
+
+
+
+
+
+    }
+
 		</script>
 </body>
 </html> 

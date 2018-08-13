@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>index</title>
+<title>查询</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </head>
-<body style="color:#350808;background-color: rgba(62, 16, 16,0.39);">
+<body style="color:#350808;background-color: rgba(62, 16, 16,0.39);" >
 		<!--start-header-section-->
 	<div class="header">
 		<div class="container">
@@ -44,20 +44,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</button>
 					</div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-						<div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-						  <ul class="nav navbar-nav cl-effect-16">
-							<li class="active"><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav cl-effect-16">
+								<li ><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
 
-							 <li class="dropdown">
-							  <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
-							  <ul class="dropdown-menu">
-								 <li><a href="toplace.html">活动报名</a></li>
+								<li >
+									<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="toplace.html">活动报名</a></li>
 
-								<li><a href="modify.html">修改地点</a></li>
-							  </ul>
-							</li>
+										<li><a href="modify.html">修改地点</a></li>
+									</ul>
+								</li>
+
 								<li ><a href="news.html">查询我的献血记录</a></li>
-								<li><a href="tips.html">献血注意事项</a></li>
+								<li class="dropdown active"><a href="tips.html">献血注意事项</a></li>
 								<li><a href="mynews.html">我的信息</a></li>
 							</ul>
 						</div><!-- /.navbar-collapse -->
@@ -85,48 +86,39 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--</div>-->
 <!--gallery-->
 
-		<div  class="feature">
-			<div class="container">
-				<h3>献血光荣</h3>
-				<div class="feature-main">
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">1</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="index.html">无偿献血系统</a></h4>
-							<p>为祖国献血事业出一份力量，您的举手之劳可以拯救更多的同胞</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">2</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="tips.html">您可以在注册后前往活动地点报名</a></h4>
-							<p>报名需要提供身份证，电话号码等信息，也请确保您的年龄在18周岁以上</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="col-md-4 fact-grid">
-						<div class="col-md-2 cord-drop">
-							<span class="numbers">3</span>
-						</div>
-						<div class="col-md-10 feature-text">
-							<h4><a href="tips.html">请认真观看献血注意事项</a></h4>
-							<p>献血者累计献血八百毫升以下，自献血之日起五年内临床用血，可以累计按其献血量的三倍免费用血；自献血之日起五年后临床用血，可以累计按其献血量等量免费用血。</p>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
+
+		<div class="col-md-12" >
+			<div class="table-responsive">
+				<table id="tplace" class="table">
+					<thead>
+
+					</thead>
+					<tbody id="data_tb">
+
+					</tbody>
+				</table>
 			</div>
 		</div>
+		<!--/.ROW-->
 
+		<div class="container py-6">
+			<div class="text-center constrain">
+				<h2 class="fw-3 fs-xl pb-3 tc-white">献血注意事项</h2>
+				<p class="fs-sm lh-sm tc-warm pb-3">1,在献血前一天和当天早晨禁食鸡,肉,鱼,蛋,豆制品,奶等高脂肪食物。<br>
+					2,献血前一天多饮水,当日吃清淡早餐,不得空腹献血。<br>
+					3,献血者在献血前一周不得服用抗血小板聚集或抑制血小板代谢的药物,
+					如阿司匹林,维生素E,消炎痛,潘生丁,氨茶碱,氯霉素及抗过敏药物的等。<br>
+					4,献血前保证充足的睡眠和稳定的情绪。<br>
+				男性体重大于50KG，女性体重大于45KG；
+				一周内没有感冒和急性胃肠炎，没有服药；
+				24小时内没有饮酒；前一晚上没有熬夜；不要空腹，献血前清淡饮食，不要吃油食物；
+				女性不在月经期间和前后3天这段时间；
+				带上身份证意见建议：指导意见：献血后注意事项：针眼愈合前不要沾生水；2天内不要从事重体力劳动和剧烈体育运动；
+				24小时内不要用采血的胳膊搬抬重物多喝水适当休息，不要熬夜正常饮食，不必刻意进补</p>
 
-
-
+				<a  style=" color:#F7BD94; font-size:38px;" href="toplace.html" class="tc-light-red fs-sm fw-3">前往报名</a>
+			</div>
+		</div>
 
 			<!--footer-->
 			<div class="footer-section">
@@ -164,7 +156,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-
+									<div class="checkbox">
+										<label>
+											<input type="checkbox">请记住我
+										</label>
+										<a class="remb">忘记密码？</a>
+									</div>
 								</div>
 							</div>
 							<div class="form-group">
@@ -229,9 +226,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="col-sm-offset-2 col-sm-10">
 									<div class="checkbox">
 										<label>
-
+											<input type="checkbox">请记住我
 										</label>
-
+										<a class="remb">忘记密码？</a>
 									</div>
 								</div>
 							</div>
@@ -259,8 +256,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 var   user_id= localStorage.getItem("userid");
-
-
 if(user_id!=="" || user_id!==null)
 {
 
@@ -270,176 +265,14 @@ if(user_id!=="" || user_id!==null)
     x.innerHTML = "Hi," + u1name+" ! ";
     x.style.color="#337ab7";
 }
+if(!user_id||user_id=="" || user_id==null)
+{
+    alert("请先注册登录");
+    window.location.href="index.html"
+}
+
 console.log(user_id);
-		function Login(){
-		if(user_id!=="" && user_id!==null)
-		{
-		alert("请先退出");
 
-		}
-		else {
-		//
-		$("#mymodal").modal();
-		$("#lgbtn").bind('click', function () {
-		var userName = $("#input_Lname ").val();
-		var userPassword = $("#input_Lpassword").val();
-
-		var donor = {
-		dname: userName,
-		dpassword: userPassword,
-
-		};
-		console.log(donor);
-
-		//遍历
-
-		//遍历
-		if (userName == "" || userPassword == "") {
-		alert("姓名密码不能为空");
-		}
-		else {
-		$.ajaxSettings.async = false;
-
-		$(function () {
-		$.ajax({
-		url: "User/regist",
-		method: "post",
-		contentType: "application/json;charset=utf-8",
-		data: JSON.stringify(donor),
-		//    dataType: "json",
-		// cache:fa lse,
-		success: function (data) {
-		console.log(data);
-		if (data == "4") {
-		alert("登录失败。密码错误");
-		}
-	else	if (data == "3") {
-		alert("登录失败，用户名不存在");
-		}
-		else {
-
-
-		localStorage.setItem("username", userName);
-		$("#mymodal ").modal('hide');
-		document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
-		//alert("你的ID为" + data);
-		localStorage.setItem("userid", data);
-	//	loadLeafletData();
-
-		}
-		},
-		error: function (data) {
-		alert("失败，请检查互联网连接")
-		}
-		});
-		})
-		}//else{
-		// alert("标题已经存在");
-		// }
-
-		})
-
-
-		}
-
-
-		};
-		function Register(){
-
-		if(user_id!==""&&user_id!==null)
-		{
-		alert("请先退出");
-
-		}
-		else {
-		$("#registermodal ").modal();
-
-		$("#rebtn").bind('click', function () {
-
-            var userName=document.getElementById("zhname").value;
-
-		var userPassword = document.getElementById("input_Rpassword").value;
-            var usertelphone= document.getElementById("input_telphone").value;
-            var useridcard= document.getElementById("input_idcard").value;
-            var xingming= document.getElementById("input_name").value;
-            var u1=document.getElementById("zhname").value;
-
-                       var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-            if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(usertelphone))) {
-                alert("不是完整的11位手机号或者正确的手机号前七位");
-
-            }
-            else if (userName == "" || userPassword == "" ||useridcard== "") {
-                alert("不能有空");
-            }
-
-            else  if(reg.test(useridcard ) === false)
-            {
-
-                alert("身份证输入不合法");
-            }
-
-
-
-            else {
-		//$.ajaxSettings.async = false;
-
-		$(function () {
-		    $.ajaxSettings.async = false;
-		$.ajax({
-		url: "Donor/save",
-            type: 'POST',
-      //      async:false,
-          //  dataType: 'json',
-       //   contentType: "application/json;charset=utf-8",
-            data:{
-            dpassword: userPassword,
-            dtelphone: usertelphone,
-            didcard:useridcard,
-            dxingming:xingming,
-                aname:userName
-
-
-		},
-		//   dataType: "json",
-		 cache:false,
-		success: function (data) {
-		// geid=data.name;
-		// geuuid=data.password;
-		// biaotibianli.push(geid);
-		alert("稍等");
-
-		if (data == "1") {
-		alert("用户名已存在");
-		}
-		else {
-		alert("注册成功");
-		localStorage.setItem("username", userName);
-
-		$("#registermodal ").modal('hide');
-		document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
-		//alert("你的ID为" + data);
-		localStorage.setItem("userid", data);
-		}
-
-
-		},
-		error: function (data) {alert("注册shibai");
-
-		}
-		});
-		})
-		}//else{
-		// alert("标题已经存在");
-		// }
-
-		})
-
-
-		}
-
-
-		}
             function quit() {
 
                 localStorage.setItem("username","");
@@ -447,6 +280,11 @@ console.log(user_id);
                 location.reload();
 
             }
+
+
+
+
+
 		</script>
 </body>
 </html> 

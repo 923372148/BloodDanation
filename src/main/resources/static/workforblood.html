@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>list of employee</title>
+    <title>Responsive Bootstrap Advance Admin Template</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -94,14 +94,17 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line">员工列表</h1>
+                    <h1 class="page-head-line">志愿者信息表</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-success"onclick="  window.history.go(-1)">返回上一层</button>
+                    </div>
 
                 </div>
             </div>
             <!-- /. ROW  -->
             <div class="col-md-12" >
                 <div class="table-responsive">
-                    <table id="tableeml" class="table">
+                    <table id="tableplace" class="table">
                         <thead>
                         <tr>
 
@@ -123,6 +126,9 @@
 
 
 
+<!-- 模态框（Modal） -->
+
+
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
 <script src="assets/js/jquery-1.10.2.js"></script>
@@ -132,9 +138,9 @@
 <!-- CUSTOM SCRIPTS -->
 <script src="assets/js/custom.js"></script>
 <script type="text/javascript">
-
+    var placetime_id=window.location.href.split("?id=")[1].split("%27")[0];
+    console.log(placetime_id);
     var work_id= localStorage.getItem("workid");
-
     console.log(work_id);
     if(!work_id||work_id=="" || work_id==null)
     {
@@ -148,64 +154,91 @@
         x.style.color="#337ab7";
     }
 
-
-showall();
-
-    function showall(){
+    load2();
 
 
-
-
+    function     load2(){
         $.ajax({
-            url: 'Employee/findall',
+            url: "Donor/findbyplacetime",
             type: 'POST',
             dataType: 'json',
-            contentType: "application/json;charset=utf-8",
-
-            cache: false,
+       data: {
+          placetime_id: placetime_id
+       },
             success: function (data) {
 
-
-                var tb = document.getElementById("tableeml");
-                $("#tableeml tr").empty();
+                console.log(data);
+                //   document.getElementById("havedoneNum").innerHTML = data.length;
+                var tb = document.getElementById("tableplace");
+                $("#tableplace tr").empty();
                 var tr=tb.insertRow(tb.rows.length);
                 tr.innerHTML+="<th>" +"序号"+"</th>";
-                tr.innerHTML+="<th>" +"姓名"+"</th>";
-                tr.innerHTML+="<th>" +"电话"+"</th>";
 
-                tr.innerHTML+="<th>" +"分配工作"+"</th>";
+                tr.innerHTML+="<th>" +"姓名"+"</th>";
+
+                tr.innerHTML+="<th>" +"手机号码"+"</th>";
+                tr.innerHTML+="<th>" +"身份证"+"</th>";
+                tr.innerHTML+="<th>" +"处理"+"</th>";
                 if(data.length>0){
                     for (var i = 0; i < data.length; i++) {
                         var j = i + 1;
                         var row = tb.insertRow(tb.rows.length);
                         row.innerHTML += "<td>" + j + "</td>";
 
-                        row.innerHTML += "<td>" + data[i].eusername + "</td>";
+                        row.innerHTML += "<td>" + data[i].dxingming+ "</td>";
 
-                        row.innerHTML += "<td>" + data[i].ephone + "</td>";
-                        row.innerHTML += "<td>" + "<a href=empinplace.html?id=" + data[i].id + "'>" +
-                            "<button type='button' class='btn btn-success  oprate' data-placement='bottom' title='前往该员工的工作界面分配分配' data-toggle='tooltip'><i class='fa fa-plus fa-1x'></i>分配</button></a></td>";
+                        row.innerHTML += "<td>" + data[i].dtelphone + "</td>";
+                        row.innerHTML += "<td>" + data[i].didcard  + "</td>";
+
+                        row.innerHTML += "<td>" + "<a href=workforbloodtwo.html?id=" + data[i].id + "'>" +
+                            "<button type='button' class='btn btn-success  oprate' data-placement='bottom' title='处理信息' data-toggle='tooltip'><i class='fa fa-plus fa-1x'></i>处理信息</button></a></td>";
 
 
+//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
+//                row.innerHTML += "<td>" + data[i].time + "</td>";
                     }
+
                 }
-
-
             },
-            error: function (message) {
-
+            error: function (data) {
+                // alert("你还没有你的已办事项")
             }
         });
 
+
+
     }
 
+    function del(id) {
+        console.log(id);
+
+        $.ajax({
+            url: 'Place/delete',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: id,
+            },
+            cache: false,
+            success: function (data) {
+                alert("删除成功");
+                window.location.reload();
+
+            },
+            error: function (data) {
+                alert("删除失败！");
+            }
+        })
+
+    }
+
+    function newone(id) {
 
 
-
-
-
-
-
+        localStorage.setItem("placeid", id);
+        alert(id);
+        window.location.href="emplist.html";
+    }
     function quit() {
 
         localStorage.setItem("workname","");

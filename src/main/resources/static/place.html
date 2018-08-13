@@ -58,7 +58,7 @@
                     <a href="#"><i class="fa fa-yelp "></i>员工界面 <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="workforblood.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
+                            <a href="workplan.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
                         </li>
                         <li>
                             <a href="workplan.html"><i class="fa fa-flash "></i>查看工作计划</a>
@@ -73,12 +73,12 @@
                             <a href="newrole.html"><i class="fa fa-flash "></i>权限管理</a>
                         </li>
                         <li>
-                            <a href="newpeople.html"><i class="fa fa-flash "></i>角色管理</a>
+                            <a href="deletepeople.html"><i class="fa fa-flash "></i>角色管理</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="history.html"><i class="fa fa-square-o "></i>统计</a>
+                    <a href="history.html"><i class="fa fa-square-o "></i>血液统计</a>
                 </li>
                 <li>
                     <a href="donorshow.html"><i class="fa fa-square-o "></i>志愿者信息一览</a>
@@ -182,12 +182,7 @@
 
     var work_id= localStorage.getItem("workid");
     console.log(work_id);
-    if(!work_id){
-        alert("请先注册登录");
-        window.location.href="regwork.html"
-
-    }
-    if(work_id=="" && work_id==null)
+    if(!work_id||work_id=="" || work_id==null)
     {
         alert("请先注册登录");
         window.location.href="regwork.html"
@@ -200,6 +195,43 @@
     }
 
     loadplacedata ();
+
+    $.ajax({
+        url: 'Role/findrole',
+        type: 'POST',
+        //dataType: 'json',
+        // contentType: "application/json;charset=utf-8",
+        data:{
+          employees_id: work_id
+
+        },
+        cache:false,
+        success : function(data) {
+            console.log(data);
+            if(!data||data==null){
+
+                alert("你不是领导或者管理员，不能分配地点")
+                window.history.go(-1);
+            }
+
+           else if( data!=="领导"&& data!=="管理员")
+
+
+            { alert("你不是领导或者管理员，不能分配地点"); window.history.go(-1);}
+
+
+
+
+
+        },
+        error: function (message) {
+            alert("失败");
+        }
+    });
+
+
+
+
 
 
     function save(){
@@ -341,7 +373,7 @@ leader:leader
 
 
         localStorage.setItem("placeid", id);
-        alert(id);
+
         window.location.href="emplist.html";
     }
     function quit() {

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Bootstrap Advance Admin Template</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="regwork.html"><i class="fa fa-home"></i>为人民服务</a>
+        </div>
+
+        <div class="header-right">
+            <div class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+                <li > <a href="#"onclick="quit()">退出登录</a></li>
+                <!--<h5><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +984 515 4945 </h5>-->
+            </div>
+
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--<li>-->
+                <!--<a href="blank.html"><i class="fa fa-square-o "></i>登录界面</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#"><i class="fa fa-desktop "></i>领导界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="place.html"><i class="fa fa-toggle-on"></i>分配时间地点员工</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>员工界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
+                        </li>
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-flash "></i>查看工作计划</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>管理员界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="newrole.html"><i class="fa fa-flash "></i>权限管理</a>
+                        </li>
+                        <li>
+                            <a href="deletepeople.html"><i class="fa fa-flash "></i>角色管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="history.html"><i class="fa fa-square-o "></i>血液统计</a>
+                </li>
+                <li>
+                    <a href="donorshow.html"><i class="fa fa-square-o "></i>志愿者信息一览</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+</div>
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">志愿者信息工作处理表</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-success"onclick="  window.history.go(-1)">返回上一层</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /. ROW  -->
+
+
+            <div style="color:#D0C0C0;background-color: #D0C0C0">
+                <table class="table table-bordered " style="color:#D0C0C0; width:100%; text-align:center;margin:1px auto;">
+                    <caption style="color: blue" ></caption>
+                    <thead style="color:#350808;">
+
+                    <tr style="border-top:#FFFFFF solid 1px;">
+                        <th>姓名</th>
+                        <td id="dname"  ></td>
+                        <th>联系电话</th>
+                        <td id="dphone" ></td>
+
+                    </tr>
+                    </thead>
+
+                    <tbody style="color:#350808;">
+
+                    <tr align="center">
+                        <th align="center">身份证号码</th>
+                        <td id="didcard" type="text" ></td>
+                    </tr>
+
+
+                    <tr>
+                        <th>血型/th>
+                        <td ><input id="dtype" type="text" class="form-control" ></td>
+
+
+                        </td>
+                        <th>献血量</th>
+                        <td><input id="dml" type="text" class="form-control"></td>
+
+                    </tr>
+                    <tr  align="center">
+                        <th  align="center">上次献血时间</th>
+                        <td  id="dlastdonate"align="center"></td>
+
+                    </tr>
+                    <tr>
+                        <th>报名地点</th>
+                        <td id="dplace"></td>
+
+                    </tr>
+
+                    <tr style="border-top:#FFFFFF solid 1px;">
+                        <th>负责人</th>
+                        <td><input id="fuzeren" type="text" class="form-control" ></td>
+                        <th>本次献血时间</th>
+                        <td><input id="dtime" type="text" class="form-control" ></td>
+
+
+                    </tr>
+
+
+
+
+
+                    </tbody>
+
+                </table>
+                <p style="text-align: center">
+                    <a ><button id="ye" type="button" class="btn btn-info "onclick="doing()">生成记录</button></a>
+                    &nbsp;&nbsp;&nbsp; &nbsp;
+                    <a ><button id="unpass" type="button" class="btn btn-info "onclick="nodoing()">标记不合格</button></a>
+                </p>
+
+            </div>
+            <!--/.ROW-->
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+
+
+
+<!-- 模态框（Modal） -->
+
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!--<script src="js/jquery-3.1.1.min.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+<script type="text/javascript">
+    var donor_id=window.location.href.split("?id=")[1].split("%27")[0];
+    console.log(donor_id);
+    var work_id= localStorage.getItem("workid");
+    console.log(work_id);
+    if(!work_id){
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+
+    }
+    if(work_id=="" && work_id==null)
+    {
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+    }
+    else{
+        var uname=localStorage.getItem("workname");
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+
+    load3();
+
+    function     load3(){
+        $.ajax({
+            url: "Donor/findbyid",
+            type: 'POST',
+            dataType: 'json',
+       data: {
+           donor_id:donor_id
+       },
+            success: function (data) {
+
+                console.log(data);
+                document.getElementById("dname").innerHTML=data.dxingming ;
+                document.getElementById("dphone").innerHTML=data.dtelphone ;
+                document.getElementById("didcard").innerHTML=data.didcard ;
+
+                if(data.dtpye && data .dtype!==null){
+                    document.getElementById("dtype").value=data.dtpye;
+                }
+
+                if(data.dlasttimedonate && data .dlasttimedonate!==null) {
+                    document.getElementById("dlastdonate").innerHTML = data.dlasttimedonate;
+
+                }
+                else{
+                    document.getElementById("dlastdonate").innerHTML="无";
+                }
+
+                if(data.placetime && data.placetime.theplace!==null) {
+
+                    document.getElementById("dplace").innerHTML=data.placetime.theplace;}
+
+                var myDate = new Date();
+                document.getElementById("dtime").value=myDate.toLocaleDateString();
+
+            },
+            error: function (data) {
+                // alert("你还没有你的已办事项")
+            }
+        });
+
+
+
+    }
+
+    function del(id) {
+        console.log(id);
+
+        $.ajax({
+            url: 'Place/delete',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: id,
+            },
+            cache: false,
+            success: function (data) {
+                alert("删除成功");
+                window.location.reload();
+
+            },
+            error: function (data) {
+                alert("删除失败！");
+            }
+        })
+
+    }
+
+    function newone(id) {
+
+
+        localStorage.setItem("placeid", id);
+        alert(id);
+        window.location.href="emplist.html";
+    }
+    function quit() {
+
+        localStorage.setItem("workname","");
+        localStorage.setItem("workid","");
+        location.reload();
+
+    }
+    function doing() {
+        var dtype=document.getElementById("dtype").value;
+ var dml=document.getElementById("dml").value;
+var name=$("#dname").html();
+        var place=$("#dplace").html();
+        var time=document.getElementById("dtime").value;
+        var d="已献血";
+        $.ajax({
+            url: 'Record/Save',
+            type: 'POST',
+            dataType: 'json',
+            // contentType: "application/json;charset=utf-8",
+            data:{
+                bloodtype:dtype,
+                ml:dml,
+
+
+             name:name,
+               place:place,
+                ifdonate:d ,
+                donor_id:donor_id
+
+            },
+            cache:false,
+            success : function(data) {
+
+                if(data==false){
+                    alert("已存在");
+
+                }
+                else{ alert("成功");
+                    window.history.go(-1);
+                }
+            },
+            error: function (message) {
+                alert("失败,请输入正确格式");
+            }
+        });
+
+
+
+
+
+    }
+
+
+
+   function nodoing()
+   {
+
+       $.ajax({
+           url: 'Record/no',
+           type: 'POST',
+           dataType: 'json',
+           // contentType: "application/json;charset=utf-8",
+           data:{
+
+               donor_id:donor_id
+           },
+           cache:false,
+           success : function(data) {
+
+
+                   window.history.go(-1);
+
+           },
+           error: function (message) {
+               alert("失败");
+           }
+       });
+
+
+   }
+</script>
+<script>
+    //弹出框设置隐藏
+    $(function () { $('#myModal').modal('hide')});
+</script>
+
+</body>
+</html>

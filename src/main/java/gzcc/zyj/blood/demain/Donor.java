@@ -136,7 +136,7 @@ public class Donor  extends BaseEntity {
     @OneToMany
     @JoinColumn(name="donorId")
     private List<Record> records =new ArrayList<>();
-    @JsonIgnore
+
 @ManyToOne
     @JoinColumn (name="placetimeId")
 private Placetime placetime ;

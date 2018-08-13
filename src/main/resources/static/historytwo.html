@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>list of employee</title>
+    <title>list of typedetail</title>
 
     <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
@@ -94,7 +94,7 @@
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="page-head-line">员工列表</h1>
+                    <h1 class="page-head-line">血型列表</h1>
 
                 </div>
             </div>
@@ -134,9 +134,23 @@
 <script type="text/javascript">
 
     var work_id= localStorage.getItem("workid");
+var i= localStorage.getItem("type");
+var bloodtype="1";
+console.log (i);
+    if(i==0){  bloodtype="A";}
+    if(i==2){  bloodtype="B";}
+    if(i==4){  bloodtype="AB";}
+    if(i==6){  bloodtype="O"}
+    if(i==8){  bloodtype="特色血型";}
 
+    console.log (bloodtype );
     console.log(work_id);
-    if(!work_id||work_id=="" || work_id==null)
+    if(!work_id){
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+
+    }
+    if(work_id=="" || work_id==null)
     {
         alert("请先注册登录");
         window.location.href="regwork.html"
@@ -157,35 +171,38 @@ showall();
 
 
         $.ajax({
-            url: 'Employee/findall',
+            url: 'Record/findbybloodtype',
             type: 'POST',
             dataType: 'json',
-            contentType: "application/json;charset=utf-8",
 
+            data: {
+                bloodtype: bloodtype
+            },
             cache: false,
             success: function (data) {
 
-
+console.log(data);
                 var tb = document.getElementById("tableeml");
                 $("#tableeml tr").empty();
                 var tr=tb.insertRow(tb.rows.length);
-                tr.innerHTML+="<th>" +"序号"+"</th>";
-                tr.innerHTML+="<th>" +"姓名"+"</th>";
-                tr.innerHTML+="<th>" +"电话"+"</th>";
+                tr.innerHTML+="<th>" +"献血者"+"</th>";
+                tr.innerHTML+="<th>" +"血型"+"</th>";
 
-                tr.innerHTML+="<th>" +"分配工作"+"</th>";
+                tr.innerHTML+="<th>" +"献血地点"+"</th>";
+                tr.innerHTML+="<th>" +"献血时间"+"</th>";
+
+
                 if(data.length>0){
                     for (var i = 0; i < data.length; i++) {
                         var j = i + 1;
                         var row = tb.insertRow(tb.rows.length);
-                        row.innerHTML += "<td>" + j + "</td>";
 
-                        row.innerHTML += "<td>" + data[i].eusername + "</td>";
+                        row.innerHTML += "<td>" + data[i].name+ "</td>";
 
-                        row.innerHTML += "<td>" + data[i].ephone + "</td>";
-                        row.innerHTML += "<td>" + "<a href=empinplace.html?id=" + data[i].id + "'>" +
-                            "<button type='button' class='btn btn-success  oprate' data-placement='bottom' title='前往该员工的工作界面分配分配' data-toggle='tooltip'><i class='fa fa-plus fa-1x'></i>分配</button></a></td>";
+                        row.innerHTML += "<td>" + data[i].bloodtype+ "</td>";
+                        row.innerHTML += "<td>" + data[i].place+ "</td>";
 
+                        row.innerHTML += "<td>" + data[i].time+ "</td>";
 
                     }
                 }

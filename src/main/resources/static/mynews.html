@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>index</title>
+<title>我的个人信息</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,8 +48,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<ul class="nav navbar-nav cl-effect-16">
 								<li ><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
 
-								<li class="dropdown active">
-									<a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
+								<li>
+									<a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
 									<ul class="dropdown-menu">
 										<li><a href="toplace.html">活动报名</a></li>
 
@@ -57,9 +57,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</ul>
 								</li>
 
-								<li ><a href="news.html">服务信息一览</a></li>
+								<li ><a href="news.html">查询我的献血记录</a></li>
 								<li><a href="tips.html">献血注意事项</a></li>
-								<li><a href="mynews.html">我的信息</a></li>
+								<li  class="dropdown active"><a href="mynews.html">我的信息</a></li>
 							</ul>
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
@@ -92,14 +92,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 <div style="color:#350808;background-color: rgba(62, 16, 16,0.39);">
-		<table class="table table-bordered " style="color:#350808; width:70%;align:center;margin:1px auto;">
+		<table class="table table-bordered " style="color:#350808; width:70%; text-align:center;margin:1px auto;">
 			<caption style="color: blue" ></caption>
 			<thead style="color:#350808;">
 			<tr>
+				<th>账号</th>
+				<td id="zhanghao" ></td>
+
+
+			</tr>
+			<tr style="border-top:#FFFFFF solid 1px;">
 				<th>姓名</th>
-				<td ><input id="department" type="text" class="form-control"  value="宣传部"></td>
+				<td ><input id="dname" type="text" class="form-control" ></td>
 				<th>联系电话</th>
-				<td><input id="time" type="text" class="form-control"></td>
+				<td><input id="dphone" type="text" class="form-control"></td>
 
 			</tr>
 			</thead>
@@ -108,49 +114,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<tr align="center">
 				<th align="center">身份证号码</th>
-				<td colspan="3"><input  id="Md_title" type="text" class="form-control"></td>
+				<td colspan="3"><input  id="didcard" type="text" class="form-control"></td>
 			</tr>
 
 
 			<tr>
 				<th>血型/th>
-				<td colspan="1">
-					<select class="form-control" id="Md_classSelect">
-						<option selected>全部</option>
+				<td id="dtype"colspan="1">
 
-					</select>
 				</td>
 
 
 			<tr  align="center">
-				<th  align="center">要求完成时间</th>
-				<td  align="center"><input id="Md_needtime" type="text" class="form-control"></td>
+				<th  align="center">最后献血时间</th>
+				<td  id="dlastdonate"align="center"></td>
 
 			</tr>
 			<tr>
-				<th>单位</th>
-				<td><input id="Md_unit" type="text" class="form-control"></td>
+				<th>报名地点</th>
+				<td id="dplace"></td>
 
 			</tr>
-			<tr>
-				<th>广告公司名称</th>
-				<td><input  id="Md_company"  type="text" class="form-control"></td>
-			</tr>
-			<tr>
-				<th>广告公司联系人</th>
-				<td><input id="Md_companybody" type="text" class="form-control"></td>
-				<th>广告公司联系方式</th>
-				<td><input id="Md_companyphone" type="text" class="form-control"></td>
+
+			<tr style="border-top:#FFFFFF solid 1px;">
+				<th>修改密码</th>
+				<td><input id="mima1"type="password" class="form-control"  placeholder="请输入密码"></td>
+				<th >重复密码</th>
+				<td><input id="mima2" type="password" class="form-control"  placeholder="请输入密码"></td>
 
 			</tr>
 
 
-			<tr>
-				<th>费用（元）</th>
-				<td><input id="Md_fare" type="text" class="form-control"></td>
 
-
-			</tr>
 
 
 
@@ -158,16 +153,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		</table>
 		<p style="text-align: center">
-			<a ><button id="Md_yes" type="button" class="btn btn-info ">确认申请</button></a>
+			<a ><button id="yes" type="button" class="btn btn-info ">修改个人信息</button></a>
 			&nbsp;&nbsp;&nbsp; &nbsp;
-			<a href="propaganda.html"><button type="button" class="btn btn-info ">取消</button></a>
+			<a href="mynews.html"><button type="button" class="btn btn-info ">取消</button></a>
 		</p>
 
 		</div>
-	</div>
 
 			<!--footer-->
-			<div class="footer-section">
+			<div style="color:#350808;background-color: rgba(62, 16, 16,0.39);"class="footer-section">
 				<div class="container">
 					<div class="footer-top">
 						<p> 本系统供学术学习使用，不用做商业用途
@@ -308,13 +302,19 @@ if(user_id!=="" || user_id!==null)
 {
 
     var u1name=localStorage.getItem("username");
-    alert(u1name);
+
     x=document.getElementById("name");
     x.innerHTML = "Hi," + u1name+" ! ";
     x.style.color="#337ab7";
 }
-console.log(user_id);
 
+if(!user_id||user_id=="" || user_id==null)
+{
+    alert("请先注册登录");
+    window.location.href="index.html"
+}
+console.log(user_id);
+loadnews();
 function Login(){
 		if(user_id!=="" && user_id!==null)
 		{
@@ -336,9 +336,7 @@ function Login(){
 		};
 		console.log(donor);
 
-		//遍历
 
-		//遍历
 		if (userName == "" || userPassword == "") {
 		alert("姓名密码不能为空");
 		}
@@ -499,47 +497,39 @@ console.log(userName );
             function loadnews() {
 			$.ajax({
 
-                url: "Place/findall",
+                url: "Donor/findbyid",
                 type: 'POST',
                 dataType: 'json',
        data: {
          donor_id: user_id
         },
                 success: function (data) {
-
-                    console.log(data);
-                    //   document.getElementById("havedoneNum").innerHTML = data.length;
-                    var tb = document.getElementById("tplace");
-                    $("#tplace tr").empty();
-                    var tr=tb.insertRow(tb.rows.length);
-                    tr.innerHTML+="<th>" +"序号"+"</th>";
-                    tr.innerHTML+="<th>" +"地点"+"</th>";
-                    tr.innerHTML+="<th>" +"时间"+"</th>";
-
-
-					tr.innerHTML+="<th>" +"增加人员"+"</th>";
-                    tr.innerHTML+="<th>" +"报名此地点"+"</th>";
-                    if(data.length>0){
-                        for (var i = 0; i < data.length; i++) {
-                            var j = i + 1;
-                            var row = tb.insertRow(tb.rows.length);
-                            row.innerHTML += "<td>" + j + "</td>";
-
-                            row.innerHTML += "<td>" + data[i].theplace+ "</td>";
-
-                            row.innerHTML += "<td>" + data[i].thetime+ "</td>";
-                            row.innerHTML += "<td>" + data[i].leader+ "</td>";
-//                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='newone(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title='前往员工列表' data-toggle='tooltip'>" +
-//                                " 负责人</button></td>"
-
-                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='del(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title=删除该地点' data-toggle='tooltip'>" +
-                                " 报名</button></td>"
-
-//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
-//                row.innerHTML += "<td>" + data[i].time + "</td>";
-                        }
+console.log(data);
+                    document.getElementById("zhanghao").innerHTML=data.dname;
+                    if(data.dtpye && data .dtype!==null){
+                    document.getElementById("dtype").innerHTML=data.dtpye;
+                }
+                    else{
+                        document.getElementById("dtype").innerHTML="未测验";
+                    }
+                    if(data.dlasttimedonate && data .dlasttimedonate!==null) {
+                        document.getElementById("dlastdonate").innerHTML = data.dlasttimedonate;
 
                     }
+                    else{
+                        document.getElementById("dlastdonate").innerHTML="无";
+                    }
+                    document.getElementById("dname").value=data.dxingming;
+                    document.getElementById("dphone").value=data.dtelphone;
+                    document.getElementById("didcard").value=data.didcard;
+                    document.getElementById("mima1").value=data.dpassword;
+                    if(data.placetime && data.placetime.theplace!==null) {
+                    document.getElementById("dplace").innerHTML=data.placetime.theplace;}
+                    else{
+                        document.getElementById("dplace").innerHTML="无";
+					}
+
+
                 },
                 error: function (data) {
                     // alert("你还没有你的已办事项")
@@ -550,6 +540,68 @@ console.log(userName );
 
 			});
             }
+
+    $("#yes").bind('click',function(){
+        alert ("d");
+var xingming=document.getElementById("dname").value;
+      var dphone=document.getElementById("dphone").value;
+
+        var didcard=document.getElementById("didcard").value;
+
+        var password1= document.getElementById("mima1").value;
+        var password2= document.getElementById("mima2").value;
+        if(password2==null||password2 =="")
+		{
+		    alert("请在重复密码框输入密码以修改信息");
+		}
+
+        if(password1 ==password2 ){
+
+
+            $.ajax({
+                url: "Donor/modify",
+                type: 'POST',
+                dataType: 'json',
+                data:{
+                    id:user_id,
+                    dpassword: password1,
+                    dtelphone: dphone,
+                    didcard:didcard,
+                    dxingming:xingming
+
+
+                },
+                //   dataType: "json",
+                cache:false,
+                success: function (data) {
+                    // geid=data.name;
+                    // geuuid=data.password;
+                    // biaotibianli.push(geid);
+
+
+                    if (data == true) {
+                        alert("修改成功");    window.location.reload();
+                    }
+                    else {
+                        alert("修改不是很成功");
+
+                    }
+
+
+                },
+                error: function (data) {alert("修改失败");
+
+                }
+            });
+
+
+		}
+		else{
+            alert("密码不匹配")
+		}
+
+    });
+
 		</script>
 </body>
 </html> 

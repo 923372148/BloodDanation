@@ -257,6 +257,9 @@ th {
     border: 1px solid #ddd !important;
   }
 }
+.anther{
+  text-align:center;
+}
 @font-face {
   font-family: 'Glyphicons Halflings';
 
@@ -274,6 +277,9 @@ th {
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.tdstyle{
+  align:center;
 }
 .glyphicon-asterisk:before {
   content: "\2a";

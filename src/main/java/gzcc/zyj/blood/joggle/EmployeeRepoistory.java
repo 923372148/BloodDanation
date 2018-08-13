@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by Admin on 2017/12/18.
  */
+@Repository
 public interface EmployeeRepoistory extends JpaRepository<Employee,String> {
    Employee  findByEphone(String ephone);
     Employee  findByEusername(String eusername);

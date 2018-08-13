@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>list of donor</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="regwork.html"><i class="fa fa-home"></i>为人民服务</a>
+        </div>
+
+        <div class="header-right">
+            <div class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+                <li > <a href="#"onclick="quit()">退出登录</a></li>
+                <!--<h5><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +984 515 4945 </h5>-->
+            </div>
+
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--<li>-->
+                <!--<a href="blank.html"><i class="fa fa-square-o "></i>登录界面</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#"><i class="fa fa-desktop "></i>领导界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="place.html"><i class="fa fa-toggle-on"></i>分配时间地点员工</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>员工界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
+                        </li>
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-flash "></i>查看工作计划</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>管理员界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="newrole.html"><i class="fa fa-flash "></i>权限管理</a>
+                        </li>
+                        <li>
+                            <a href="deletepeople.html"><i class="fa fa-flash "></i>角色管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="history.html"><i class="fa fa-square-o "></i>血液统计</a>
+                </li>
+                <li>
+                    <a href="donorshow.html"><i class="fa fa-square-o "></i>志愿者信息一览</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+</div>
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">志愿者列表</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">添加志愿者</button>
+                    </div>
+                </div>
+                <div class="form-group input-group-sm">
+                    <form class="form-inline">
+                    <div class="col-sm-6">
+                        <input id="input_name" type="text" class="form-control"  placeholder="请输入姓名">
+
+                    <a ><button id="yes1" type="button" class="btn btn-info "onclick="search1()">查询</button></a>
+                </div>
+                    </form>
+                    <form class="form-inline">
+                    <div  class="col-sm-6">
+                        <input id="input_idcard" type="text" class="form-control"  placeholder="请输入身份证">
+
+                    <a ><button id="yes2" style = "text-align:left;"type="button" class="btn btn-info "onclick="search2()">查询</button></a>
+
+                </div>
+                        </form>
+                </div>
+
+            </div>
+            <!-- /. ROW  -->
+            <div class="col-md-12" >
+                <div class="table-responsive">
+                    <table id="tableeml" class="table">
+                        <thead>
+                        <tr>
+
+                        </tr>
+                        </thead>
+                        <tbody id="data_tb">
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!--/.ROW-->
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: orange">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增地点
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" >账号</span>
+                    <input id="id" type="text" class="form-control" placeholder="输入账号">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">姓名</span>
+                    <input id="xingming" type="text" class="form-control" placeholder="输入姓名">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">密码</span>
+                    <input id="password" type="password" class="form-control" placeholder="输入密码">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">身份证</span>
+                    <input id="idcard" type="text" class="form-control" placeholder="输入身份证">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">电话</span>
+                    <input id="telphone" type="text" class="form-control" placeholder="电话">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="save()">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!--<script src="js/jquery-3.1.1.min.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+<script type="text/javascript">
+
+    var work_id= localStorage.getItem("workid");
+
+    console.log(work_id);
+
+    if(!work_id||work_id=="" || work_id==null)
+    {
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+    }
+    else{
+        var uname=localStorage.getItem("workname");
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+
+
+showall();
+
+    function showall(){
+
+
+
+
+        $.ajax({
+            url: 'Donor/findall',
+            type: 'POST',
+            dataType: 'json',
+            //contentType: "application/json;charset=utf-8",
+
+            cache: false,
+            success: function (data) {
+
+
+                var tb = document.getElementById("tableeml");
+                $("#tableeml tr").empty();
+                var tr=tb.insertRow(tb.rows.length);
+                tr.innerHTML+="<th>" +"序号"+"</th>";
+                tr.innerHTML+="<th>" +"姓名"+"</th>";
+                tr.innerHTML+="<th>" +"电话"+"</th>";
+
+                tr.innerHTML+="<th>" +"血型"+"</th>";
+                tr.innerHTML+="<th>" +"身份证"+"</th>";
+
+                if(data.length>0){
+                    for (var i = 0; i < data.length; i++) {
+                        var j = i + 1;
+                        var row = tb.insertRow(tb.rows.length);
+                        row.innerHTML += "<td>" + j + "</td>";
+
+                        row.innerHTML += "<td>" + data[i].dxingming + "</td>";
+
+                        row.innerHTML += "<td>" + data[i].dtelphone  + "</td>";
+                        if(data[i].dtpye &&data[i].dtpye!==null){
+                        row.innerHTML += "<td>" + data[i].dtpye  + "</td>";}
+                        else{
+                            row.innerHTML += "<td>暂无</td>";
+                        }
+                        row.innerHTML += "<td>" + data[i].didcard   + "</td>";
+                    }
+                }
+
+
+            },
+            error: function (message) {
+
+            }
+        });
+
+    }
+
+
+
+
+
+    function save() {
+
+
+        var dxingming = $("#xingming").val();
+        var dpassword = document.getElementById("password").value;
+        var didcard = document.getElementById("idcard").value;
+
+        var dname = document.getElementById("id").value;
+
+        var dtelphone = document.getElementById("telphone").value;
+
+        console.log(dxingming);
+
+        var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(dtelphone))) {
+            alert("不是完整的11位手机号或者正确的手机号前七位");
+
+        }
+        else if (dname == "" || dpassword == "" || didcard == "") {
+            alert("不能有空");
+        }
+
+        else if (reg.test(didcard) === false) {
+
+            alert("身份证输入不合法");
+        }
+
+
+        else {
+
+
+            $.ajaxSettings.async = false;
+            $.ajax({
+                url: "Donor/save",
+                type: 'POST',
+                //      async:false,
+                //  dataType: 'json',
+                //   contentType: "application/json;charset=utf-8",
+                data: {
+                    dpassword: dpassword,
+                    dtelphone: dtelphone,
+                    didcard: didcard,
+                    dxingming: dxingming,
+                    aname: dname
+
+
+                },
+                //   dataType: "json",
+                cache: false,
+                success: function (data) {
+
+
+                    if (data == "1") {
+                        alert("用户名已存在");
+                    }
+                    else {
+                        alert("成功");
+                        $('#myModal').modal('hide');
+                        window.location.reload();
+                    }
+
+
+                },
+                error: function (data) {
+                    alert("注册shibai");
+
+                }
+            });
+
+        }
+
+    }
+
+
+    function quit() {
+
+        localStorage.setItem("workname","");
+        localStorage.setItem("workid","");
+        location.reload();
+
+    }
+    function search1() {
+
+        var dxingming=document .getElementById ("input_name").value;
+        console .log(dxingming);
+
+        $.ajax({
+
+            url: "Donor/findbyxingming",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                dxingming:dxingming
+            },
+            success: function (data) {
+                console .log (data );
+              document .getElementById ("input_name").value=" ";
+                var tb = document.getElementById("tableeml");
+                $("#tableeml tr").empty();
+                var tr=tb.insertRow(1);
+                tr.innerHTML+="<th>" +"序号"+"</th>";
+                tr.innerHTML+="<th>" +"姓名"+"</th>";
+                tr.innerHTML+="<th>" +"电话"+"</th>";
+
+                tr.innerHTML+="<th>" +"血型"+"</th>";
+                tr.innerHTML+="<th>" +"身份证"+"</th>";
+
+                        var row = tb.insertRow(tb.rows.length);
+                        row.innerHTML += "<td> 1</td>";
+
+                        row.innerHTML += "<td>" + data.dxingming + "</td>";
+
+                        row.innerHTML += "<td>" + data.dtelphone  + "</td>";
+                        if(data.dtpye &&data.dtpye!==null){
+                            row.innerHTML += "<td>" + data.dtpye  + "</td>";}
+                        else{
+                            row.innerHTML += "<td>暂无</td>";
+                        }
+                        row.innerHTML += "<td>" + data.didcard   + "</td>";
+
+
+            },
+            error: function (data) {
+                alert("未查询到");
+            }
+
+
+
+
+        });
+
+    }
+
+
+    function search2() {
+
+        var didcard=document .getElementById ("input_idcard").value;
+        console .log(didcard );
+
+        $.ajax({
+
+            url: "Donor/findbyidcard",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                didcard: didcard
+            },
+            success: function (data) {
+            document .getElementById ("input_idcard").value="";
+                var tb = document.getElementById("tableeml");
+                $("#tableeml tr").empty();
+                var tr=tb.insertRow(1);
+                tr.innerHTML+="<th>" +"序号"+"</th>";
+                tr.innerHTML+="<th>" +"姓名"+"</th>";
+                tr.innerHTML+="<th>" +"电话"+"</th>";
+
+                tr.innerHTML+="<th>" +"血型"+"</th>";
+                tr.innerHTML+="<th>" +"身份证"+"</th>";
+
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<td> 1</td>";
+
+                row.innerHTML += "<td>" + data.dxingming + "</td>";
+
+                row.innerHTML += "<td>" + data.dtelphone  + "</td>";
+                if(data.dtpye &&data.dtpye!==null){
+                    row.innerHTML += "<td>" + data.dtpye  + "</td>";}
+                else{
+                    row.innerHTML += "<td>暂无</td>";
+                }
+                row.innerHTML += "<td>" + data.didcard   + "</td>";
+
+
+            },
+            error: function (data) {
+                alert("未查询到");
+            }
+
+
+
+
+        });
+
+    }
+</script>
+<script>
+    //弹出框设置隐藏
+    $(function () { $('#myModal').modal('hide')});
+</script>
+
+</body>
+</html>

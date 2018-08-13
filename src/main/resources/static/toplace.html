@@ -12,7 +12,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </head>
-<body>
+<body style="color:#350808;background-color: rgba(62, 16, 16,0.39);" >
 		<!--start-header-section-->
 	<div class="header">
 		<div class="container">
@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</ul>
 								</li>
 
-								<li ><a href="news.html">服务信息一览</a></li>
+								<li ><a href="news.html">查询我的献血记录</a></li>
 								<li><a href="tips.html">献血注意事项</a></li>
 								<li><a href="mynews.html">我的信息</a></li>
 							</ul>
@@ -239,17 +239,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 var   user_id= localStorage.getItem("userid");
-
-
 if(user_id!=="" || user_id!==null)
 {
 
     var u1name=localStorage.getItem("username");
-    alert(u1name);
+
     x=document.getElementById("name");
     x.innerHTML = "Hi," + u1name+" ! ";
     x.style.color="#337ab7";
 }
+if(!user_id||user_id=="" || user_id==null)
+{
+    alert("请先注册登录");
+    window.location.href="index.html"
+}
+
+
 console.log(user_id);
 loadplace();
 function Login(){
@@ -306,7 +311,7 @@ function Login(){
 		document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
 		//alert("你的ID为" + data);
 		localStorage.setItem("userid", data);
-	//	loadLeafletData();
+
 
 		}
 		},
@@ -346,15 +351,7 @@ function Login(){
             var xingming= document.getElementById("input_name").value;
             var u1=document.getElementById("zhname").value;
 
-//		var donor = {
-//            dname:userName,
-//				dpassword: userPassword,
-//		dtelphone: usertelphone,
-//			didcard:useridcard,
-//			dxingming:xingming
-//
-//
-//		};
+
 console.log(userName );
 		//console.log(donor);
            // console.log(u1 );
@@ -454,7 +451,7 @@ console.log(userName );
                     tr.innerHTML+="<th>" +"时间"+"</th>";
 
 
-					tr.innerHTML+="<th>" +"增加人员"+"</th>";
+					tr.innerHTML+="<th>" +"已报人员"+"</th>";
                     tr.innerHTML+="<th>" +"报名此地点"+"</th>";
                     if(data.length>0){
                         for (var i = 0; i < data.length; i++) {
@@ -465,11 +462,11 @@ console.log(userName );
                             row.innerHTML += "<td>" + data[i].theplace+ "</td>";
 
                             row.innerHTML += "<td>" + data[i].thetime+ "</td>";
-                            row.innerHTML += "<td>" + data[i].leader+ "</td>";
+                            row.innerHTML += "<td>" + data[i].sum+ "</td>";
 //                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='newone(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title='前往员工列表' data-toggle='tooltip'>" +
 //                                " 负责人</button></td>"
 
-                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='del(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title=删除该地点' data-toggle='tooltip'>" +
+                            row.innerHTML += "<td><button style='background-color:#655067;' id='"+data[i].id+"' onclick='newt(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title=删除该地点' data-toggle='tooltip'>" +
                                 " 报名</button></td>"
 
 //                row.innerHTML += "<td>" + data[i].user.username + "</td>";
@@ -487,6 +484,56 @@ console.log(userName );
 
 			});
             }
+    function newt(id){
+        console.log(id);
+
+
+
+
+
+        $.ajax({
+            url: 'Place/savedonor',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                placetime_id:id,
+               donor_id:user_id
+
+            },
+            cache: false,
+            success: function (data) {
+
+                if(data==1)
+                {
+                    alert("失败！您已经有报名献血地点了,前往个人信息查看");
+                    window.location.href="mynews.html";
+
+                }
+                if(data==2)
+                {
+                    alert("失败！您离上次献血未超过180天，前往个人信息查看");
+                    window.location.href="mynews.html";
+
+                }
+if(data==3)
+				{           alert ("申请成功");
+
+                    window.location.href="mynews.html";
+
+				}
+
+            },
+            error: function (data) {
+                alert("请求失败");
+            }
+        })
+
+
+
+
+
+    }
+
 		</script>
 </body>
 </html> 

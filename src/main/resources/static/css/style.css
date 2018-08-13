@@ -74,7 +74,7 @@ span.glyphicon.glyphicon-phone {
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #dc0000;
+    background-color: #482D2D;
 }
 .dropdown-menu > li > a {
     font-family: 'CarterOne';
@@ -99,14 +99,14 @@ span.glyphicon.glyphicon-phone {
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: #dc0000;
+    background-color: #482D2D;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     color: #fff;
-    background-color: #dc0000;
+    background-color: #482D2D;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    background-color: #dc0000;
+    background-color:#482D2D;
     color: #fff;
 }
 .dropdown-menu > li > a {
@@ -257,7 +257,7 @@ a.button:hover {
 .feature h3 {
     font-size: 3.5em;
     text-transform: capitalize;
-    color: #dc0000;
+    color:#6D4137;;
     font-family: 'OpenSans-CondLight';
 }
 .feature-grids {
