@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Bootstrap Advance Admin Template</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="regwork.html"><i class="fa fa-home"></i>为人民服务</a>
+        </div>
+
+        <div class="header-right">
+            <div class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+                <li > <a href="#"onclick="quit()">退出登录</a></li>
+                <!--<h5><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +984 515 4945 </h5>-->
+            </div>
+
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--<li>-->
+                <!--<a href="blank.html"><i class="fa fa-square-o "></i>登录界面</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#"><i class="fa fa-desktop "></i>领导界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="place.html"><i class="fa fa-toggle-on"></i>分配时间地点员工</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>员工界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="workforblood.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
+                        </li>
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-flash "></i>查看工作计划</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>管理员界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="newrole.html"><i class="fa fa-flash "></i>权限管理</a>
+                        </li>
+                        <li>
+                            <a href="newpeople.html"><i class="fa fa-flash "></i>角色管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="history.html"><i class="fa fa-square-o "></i>统计</a>
+                </li>
+                <li>
+                    <a href="donorshow.html"><i class="fa fa-square-o "></i>志愿者信息一览</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+</div>
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">地点</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">添加地点</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="col-md-12" >
+                <div class="table-responsive">
+                    <table id="tableplace" class="table">
+                        <thead>
+                        <tr>
+
+                        </tr>
+                        </thead>
+                        <tbody id="data_tb">
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!--/.ROW-->
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color: orange">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增地点
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" >地点</span>
+                    <input id="place" type="text" class="form-control" placeholder="输入地点">
+                </div>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">日期</span>
+                    <input id="time" type="text" class="form-control" placeholder="输入如2018-12-11">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">开始时间</span>
+                    <input id="starttime" type="text" class="form-control" placeholder="输入如13:04">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">结束时间</span>
+                    <input id="finishtime" type="text" class="form-control" placeholder="输入如15:51">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">负责人</span>
+                    <input id="leader" type="text" class="form-control" placeholder="名字">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="save()">保存</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!--<script src="js/jquery-3.1.1.min.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+<script type="text/javascript">
+
+    var work_id= localStorage.getItem("workid");
+    console.log(work_id);
+    if(!work_id){
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+
+    }
+    if(work_id=="" && work_id==null)
+    {
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+    }
+    else{
+        var uname=localStorage.getItem("workname");
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+
+    loadplacedata ();
+
+
+    function save(){
+
+
+        var  theplace= $("#place").val();
+        var thetime = document.getElementById("time").value;
+        var starttime= document.getElementById("starttime").value;
+        var endtime= document.getElementById("finishtime").value;
+        var leader= document.getElementById("leader").value;
+        console.log(theplace);
+
+        var placetime= {
+            theplace:theplace,
+            thetime : thetime ,
+            starttime:starttime ,
+            endtime:endtime ,
+leader:leader
+
+        }
+        console.log(placetime);
+
+        $.ajax({
+            url: 'Place/saveplace',
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(placetime),
+            cache: false,
+            success: function (data) {
+                if (data == false) {
+                    alert("已存在")
+
+                }
+                else {
+                    alert("申请成功");
+                    $('#myModal').modal('hide');
+                    $("#rolename").val("");
+                    $("#roledescription ").val("");
+
+
+                    loadplacedata ();
+
+
+
+
+
+                }
+            },
+            error: function (message) {
+
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+    function     loadplacedata (){
+        $.ajax({
+            url: "Place/findall",
+            type: 'POST',
+            dataType: 'json',
+//        data: {
+//            user_id: user_id
+//        },
+            success: function (data) {
+
+                console.log(data);
+                //   document.getElementById("havedoneNum").innerHTML = data.length;
+                var tb = document.getElementById("tableplace");
+                $("#tableplace tr").empty();
+                var tr=tb.insertRow(tb.rows.length);
+                tr.innerHTML+="<th>" +"序号"+"</th>";
+                tr.innerHTML+="<th>" +"地点"+"</th>";
+                tr.innerHTML+="<th>" +"时间"+"</th>";
+
+                tr.innerHTML+="<th>" +"增加人员"+"</th>";
+                tr.innerHTML+="<th>" +"删除地点"+"</th>";
+                if(data.length>0){
+                    for (var i = 0; i < data.length; i++) {
+                        var j = i + 1;
+                        var row = tb.insertRow(tb.rows.length);
+                        row.innerHTML += "<td>" + j + "</td>";
+
+                        row.innerHTML += "<td>" + data[i].theplace+ "</td>";
+
+                        row.innerHTML += "<td>" + data[i].thetime+ "</td>";
+
+                        row.innerHTML += "<td><button id='"+data[i].id+"' onclick='newone(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title='前往员工列表' data-toggle='tooltip'>" +
+                            " 添加人员</button></td>"
+
+                        row.innerHTML += "<td><button id='"+data[i].id+"' onclick='del(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title=删除该地点' data-toggle='tooltip'>" +
+                            " 删除</button></td>"
+
+//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
+//                row.innerHTML += "<td>" + data[i].time + "</td>";
+                    }
+
+                }
+            },
+            error: function (data) {
+                // alert("你还没有你的已办事项")
+            }
+        });
+
+
+
+    }
+
+    function del(id) {
+        console.log(id);
+
+        $.ajax({
+            url: 'Place/delete',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: id,
+            },
+            cache: false,
+            success: function (data) {
+                alert("删除成功");
+                window.location.reload();
+
+            },
+            error: function (data) {
+                alert("删除失败！");
+            }
+        })
+
+    }
+
+    function newone(id) {
+
+
+        localStorage.setItem("placeid", id);
+        alert(id);
+        window.location.href="emplist.html";
+    }
+    function quit() {
+
+        localStorage.setItem("workname","");
+        localStorage.setItem("workid","");
+        location.reload();
+
+    }
+</script>
+<script>
+    //弹出框设置隐藏
+    $(function () { $('#myModal').modal('hide')});
+</script>
+
+</body>
+</html>

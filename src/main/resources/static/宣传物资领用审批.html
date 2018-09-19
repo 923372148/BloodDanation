@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣传品物资领用审批</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+  <div  class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="name"><a href="#">欢迎您</a></li>
+      </ul>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+<div class="container-fluid">
+  <ul class="nav nav-justified"style="background-color: #749bed">
+    <li class="active"><a href="first.html">我的工作台</a></li>
+    <li><a href="propaganda.html">宣传管理</a></li>
+    <li><a href="#">招募管理</a></li>
+    <li><a href="#">服务管理</a></li>
+    <li><a href="#">统计报表</a></li>
+    <li><a href="#">绩效考核</a></li>
+    <li><a href="#">志愿者管理</a></li>
+    <li><a href="RoleManage.html ">权限管理</a></li>
+    <li><a href="usermanage.html ">用户管理</a></li>
+    <li><a href="#">样式（演示）</a></li>
+  </ul>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+    <li class="breadcrumb-item active"> 宣传品物资领用审批</li>
+  </ol>
+
+  <h4 style="text-align: center ; padding-top: 10px" >宣传品物资领用审批</h4>
+  <table class="table table-bordered ">
+    <caption style="color: blue" id="Gd_status">状态：待审批</caption>
+    <thead>
+    <tr>
+      <th >申请部门</th>
+      <td colspan="4"><input  id="bumen"type="text" class="form-control" value="宣传部"></td>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+      <th >申请人</th>
+      <td><input id="Gd_applyer" type="text" class="form-control"></td>
+      <th>联系电话</th>
+      <td><input id="Gd_phone" type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th>标题</th>
+      <td colspan="3"><input  id="Gd_title" type="text" class="form-control"></td>
+    </tr>
+
+
+    <table id="tb1"class="table table-bordered ">
+
+
+      <thead>
+      <tr>
+        <th colspan="1">No.</th>
+        <th colspan="1">名称</th>
+        <th colspan="1">单位</th>
+        <th colspan="1">数量</th>
+        <th colspan="1" >使用方向</th>
+        <th colspan="1">备注</th>
+        <th colspan="2">申请领用时间</th>
+      </tr>
+      </thead>
+      <tbody id="data_tb1">
+
+      </tbody>
+    </table>
+    <table class="table table-bordered ">
+    <tr>
+      <th>备注</th>
+      <td colspan="3" ><input  value="无" type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th>填写审批意见</th>
+      <td colspan="3"> <textarea id="Gd_point"class="form-control" rows="3"></textarea></td>
+    </tr>
+</table>
+    </tbody>
+
+  </table>
+  <p style="text-align: center">
+    <a href="first.html"><button type="button" id="Gd_agree" class="btn btn-info ">同意审批</button></a>
+    &nbsp;&nbsp;&nbsp; &nbsp;
+    <a href="first.html"><button type="button" class="btn btn-info ">退回拟稿人</button></a>
+  </p>
+
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+  //  var id="26a771db-cab0-408a-9c4e-a4af9974cf57"
+
+
+
+
+  document.getElementById("Gd_agree").setAttribute("disabled", true);
+  var id=window.location.href.split("?id=")[1];
+  user_id= localStorage.getItem("userid");
+  if(user_id==""||user_id ==null)
+  {
+      alert("请先登录");
+      window.location.href='first.html';
+
+  }else {
+
+      var uname= localStorage.getItem("username");
+      if( localStorage.getItem("username")!=="") {
+
+          x=document.getElementById("name");
+          x.innerHTML = "Hi," + uname+" ! ";
+          x.style.color="#337ab7";
+      }
+
+      $.ajax({
+          url: 'leaflet/iduser',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+              id: user_id
+          },
+          cache: false,
+          success: function (data) {
+              console.log(data);
+              //   console.log(data.roles[0].name);
+              for (var i = 0; i < data.roles.length; i++) {
+                  console.log(data.roles[i].name == "领导");
+
+                  if (data.roles[i].name == "领导") {
+                      // document.getElementById("agree").setAttribute("disabled", false);
+                      document.getElementById("Gd_agree").disabled = false;
+
+                      console.log("变")
+
+                  }
+              }
+          },
+          error: function (data) {
+
+          }
+      });
+
+
+
+      console.log(id);
+      $.ajax({
+          url: 'goods/Onegoodsid',
+          // url: 'onegoods/Onegoodsid',
+
+          type: 'POST',
+          dataType: 'json',
+          //   contentType: "application/json;charset=utf-8",
+          data: {
+              id: id
+          },
+          cache: false,
+          success: function (data) {
+              console.log(data);
+
+              if (data.status == "已审批") {
+                  document.getElementById("Gd_agree").setAttribute("disabled", true);
+                  document.getElementById('Gd_status').innerHTML = '状态：已审批';
+
+
+              }
+
+
+              var tb = document.getElementById("tb1");
+              for (var i = 0; i < data.goodss.length; i++) {
+                  var j = i + 1;
+                  var row = tb.insertRow(tb.rows.length);
+                  row.innerHTML += "<td>" + j + "</td>";
+                  //     row.innerHTML += "<td>" +"<a href='IMreview.html?id="+data[i].id+"'>"+data[i].title +"</a>"+ "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].mingcheng + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].unit + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].sum + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].usedirection + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].beizhu + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].time + "</td>";
+
+              }
+
+              document.getElementById("Gd_title").value = data.title;
+              document.getElementById("Gd_phone").value = data.user.phone;
+              document.getElementById("Gd_applyer").value = data.user.username;
+
+          },
+          error: function (data) {
+              alert("失败")
+          }
+      });
+  }
+  $("#Gd_agree").bind('click', function () {
+      var opinon=document.getElementById("Gd_point").value;
+      alert(opinon );
+      $.ajax({
+          url: 'goods/updateid',
+          type: 'POST',
+          dataType: 'json',
+          //   contentType: "application/json;charset=utf-8",
+          data: {
+              id: id,
+              opinon:opinon
+          },
+          cache: false,
+          success: function (data) {
+              alert ("审批成功")
+              window.location.href="first.html"
+
+          },
+
+      });
+  });
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>宣传信息审核</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div  class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+        <li class="active"><a href="first.html">我的工作台</a></li>
+        <li><a href="propaganda.html">宣传管理</a></li>
+        <li><a href="#">招募管理</a></li>
+        <li><a href="#">服务管理</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">绩效考核</a></li>
+        <li><a href="#">志愿者管理</a></li>
+        <li><a href="RoleManage.html ">权限管理</a></li>
+        <li><a href="usermanage.html ">用户管理</a></li>
+        <li><a href="#">样式（演示）</a></li>
+    </ul>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+        <li class="breadcrumb-item active">宣传信息发布申请表</li>
+    </ol>
+    <h4 style="text-align: center;padding-top: 10px">宣传信息发布申请表</h4>
+    <table class="table table-bordered">
+        <caption id="statu" style="color: blue"  >状态：待审批</caption>
+        <thead>
+        <tr>
+            <th>申请部门</th>
+            <td><input id="IM_department" type="text" class="form-control"   value="宣传部"></td>
+            <th>申请时间</th>
+            <td><input id="IM_time"     type="text" class="form-control"></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>申请人</th>
+            <td><input id="IM_applyer" type="text" class="form-control"></td>
+            <th>联系电话</th>
+            <td><input  id="IM_phone"  type="text" class="form-control"></td>
+        </tr>
+        <tr >
+            <th>标题</th>
+            <td colspan="3"><input  id="IM_title"  type="text" class="form-control"> </td>
+        </tr>
+        <tr>
+            <th>类别</th>
+            <td colspan="3"><input  id="IM_classSelect" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>发布媒介（对象）</th>
+            <td colspan="3"><input id="IM_vehicle" type="text" class="form-control"></td>
+        </tr>
+
+        <tr>
+            <th>内容</th>
+            <td colspan="3"><input  id="IM_content" type="text" class="form-control"></td>
+        </tr>
+        <tr>
+            <th>备注</th>
+            <td colspan="3">无</td>
+        </tr>
+        <tr>
+            <th>填写审批意见</th>
+            <td colspan="3"> <textarea id="point"class="form-control" rows="3"></textarea></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+    <p style="text-align: center">
+        <a href="#"><button id="agree"type="button" class="btn btn-info ">同意审批</button></a>
+        &nbsp;&nbsp;&nbsp; &nbsp;
+        <a href="first.html"><button type="button" class="btn btn-info ">退回拟稿人</button></a>
+    </p>
+</div>
+
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   document.getElementById("agree").setAttribute("disabled", true);
+    var id=window.location.href.split("?id=")[1];
+    user_id= localStorage.getItem("userid");
+    if(user_id==""||user_id ==null)
+    {
+        alert("请先登录");
+        window.location.href='first.html';
+
+    }else {
+        var uname= localStorage.getItem("username");
+        if( localStorage.getItem("username")!=="") {
+
+            x=document.getElementById("name");
+            x.innerHTML = "Hi," + uname+" ! ";
+            x.style.color="#337ab7";
+        }
+
+
+        $.ajax({
+            url: 'leaflet/iduser',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: user_id
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                //   console.log(data.roles[0].name);
+                for(var i=0;i<data.roles.length;i++) {
+                    console.log(data.roles[i].name == "领导");
+
+                    if (data.roles[i].name == "领导") {
+                       // document.getElementById("agree").setAttribute("disabled", false);
+                        document.getElementById("agree").disabled=false;
+
+                        console.log("变")
+
+                    }
+                }
+            },
+            error: function (data) {
+                alert("失败")
+            }
+        });
+
+
+        console.log(id);
+        $.ajax({
+            url: 'leaflet/id',
+            type: 'POST',
+            dataType: 'json',
+            //   contentType: "application/json;charset=utf-8",
+            data: {
+                id: id
+            },
+            cache: false,
+            success: function (data) {
+
+
+
+                if (data.status == "已审批") {
+                   document.getElementById("agree").setAttribute("disabled", true);
+                    document.getElementById('statu').innerHTML = '状态：已审批';
+
+                }
+                console.log(data);
+
+                document.getElementById("IM_content").value = data.content;
+                document.getElementById("IM_title").value = data.title;
+                document.getElementById("IM_vehicle").value = data.vehicle;
+                document.getElementById("IM_time").value = data.time;
+                document.getElementById("IM_phone").value = data.user.phone;
+                document.getElementById("IM_applyer").value = data.user.username;
+                document.getElementById("IM_classSelect").value = data.categories[0].kind;
+
+            },
+            error: function (data) {
+                alert("失败")
+            }
+        }); m,
+        $("#agree").bind('click', function () {
+
+
+
+
+
+
+
+
+
+
+            var opinon = document.getElementById("point").value;
+            alert(opinon);
+            $.ajax({
+                url: 'leaflet/updateid',
+                type: 'POST',
+                dataType: 'json',
+                //   contentType: "application/json;charset=utf-8",
+                data: {
+                    id: id,
+                    opinon: opinon
+                },
+                cache: false,
+                success: function (data) {
+                    alert("审批成功")
+                    window.location.href = "first.html"
+
+                },
+                error: function (data) {
+                    alert("失败")
+                }
+            });
+
+
+        });
+    }
+</script>
+</body>
+</html>

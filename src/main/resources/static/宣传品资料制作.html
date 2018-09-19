@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>宣传品资料制作</title>
+      <!-- Bootstrap core CSS -->
+      <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+      <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+      <!-- Custom styles for this template -->
+      <link href="jumbotron.css" rel="stylesheet">
+
+      <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+      <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+      <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+  <body>
+  <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+  <nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div  class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="name"><a href="#">欢迎您</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+      <li class="active"><a href="first.html">我的工作台</a></li>
+      <li><a href="propaganda.html">宣传管理</a></li>
+      <li><a href="#">招募管理</a></li>
+      <li><a href="#">服务管理</a></li>
+      <li><a href="#">统计报表</a></li>
+      <li><a href="#">绩效考核</a></li>
+      <li><a href="#">志愿者管理</a></li>
+      <li><a href="RoleManage.html ">权限管理</a></li>
+      <li><a href="usermanage.html ">用户管理</a></li>
+      <li><a href="#">样式（演示）</a></li>
+    </ul>
+
+
+
+    <h4 style="text-align: center ; padding-top: 10px" >宣传品资料制作申请</h4>
+    <table class="table table-bordered ">
+    <caption style="color: blue" >状态：待审批</caption>
+    <thead>
+    <tr>
+      <th>申请部门</th>
+      <td ><input id="department" type="text" class="form-control"  value="宣传部"></td>
+      <th>申请时间</th>
+      <td><input id="time" type="text" class="form-control"></td>
+
+    </tr>
+    </thead>
+
+      <tbody>
+      <tr>
+        <th >申请人</th>
+        <td><input id="applyer" type="text" class="form-control"></td>
+        <th>联系电话</th>
+        <td><input id="phone" type="text" class="form-control"></td>
+      </tr>
+      <tr>
+        <th>标题</th>
+        <td colspan="3"><input  id="Md_title" type="text" class="form-control"></td>
+      </tr>
+
+      <tr> <th colspan="4"   style="text-align: center" >在以下表格填写宣传品（资料）内容</th>
+      </tr>
+     <tr>
+       <th>宣传品类别</th>
+       <td colspan="1">
+         <select class="form-control" id="Md_classSelect">
+           <option selected>全部</option>
+
+         </select>
+       </td>
+       <th>宣传品名称</th>
+       <td><input id="Md_mingcheng" type="text" class="form-control"></td>
+     </tr>
+
+      <tr>
+        <th>制作方式</th>
+        <td id="Md_makingstyles" colspan="4">
+
+          <input type="checkbox"id="Md_checkbox1">内部制作
+          &nbsp;&nbsp;&nbsp;
+          <input type="checkbox"id="Md_checkbox2">广告公司制作
+        </td>
+      </tr>
+      <tr>
+        <th>要求完成时间</th>
+        <td ><input id="Md_needtime" type="text" class="form-control"></td>
+        <th>规格</th>
+        <td ><input id="Md_standard" type="text" class="form-control"></td>
+      </tr>
+      <tr>
+        <th>单位</th>
+        <td><input id="Md_unit" type="text" class="form-control"></td>
+        <th>制作数量</th>
+        <td><input id="Md_sum" type="text" class="form-control"></td>
+
+      </tr>
+      <tr>
+        <th>广告公司名称</th>
+        <td><input  id="Md_company"  type="text" class="form-control"></td>
+      </tr>
+      <tr>
+        <th>广告公司联系人</th>
+        <td><input id="Md_companybody" type="text" class="form-control"></td>
+        <th>广告公司联系方式</th>
+        <td><input id="Md_companyphone" type="text" class="form-control"></td>
+
+      </tr>
+
+
+      <tr>
+        <th>费用（元）</th>
+        <td><input id="Md_fare" type="text" class="form-control"></td>
+        <th>负责人</th>
+        <td><input  id="Md_hostname" type="text" class="form-control"></td>
+
+      </tr>
+
+
+
+      </tbody>
+
+    </table>
+    <p style="text-align: center">
+      <a ><button id="Md_yes" type="button" class="btn btn-info ">确认申请</button></a>
+      &nbsp;&nbsp;&nbsp; &nbsp;
+      <a href="propaganda.html"><button type="button" class="btn btn-info ">取消</button></a>
+    </p>
+
+  </div>
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+
+      user_id= localStorage.getItem("userid");
+      if(user_id==""||user_id ==null)
+      {
+          alert("请先登录");
+      window.location.href='first.html';
+
+      }else {
+          var uname= localStorage.getItem("username");
+          if( localStorage.getItem("username")!=="") {
+
+              x=document.getElementById("name");
+              x.innerHTML = "Hi," + uname+" ! ";
+              x.style.color="#337ab7";
+          }
+
+          var d = new Date();
+          var time = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+
+
+
+          $.ajax({
+              url: 'leaflet/iduser',
+              type: 'POST',
+              dataType: 'json',
+              data: {
+                  id: user_id
+              },
+              cache: false,
+              success: function (data) {
+                  console.log(data);
+                  document.getElementById("applyer").value=data.username;
+
+                  document.getElementById("phone").value=data.phone;
+                  document.getElementById("time").value=time;
+
+              },
+              error: function (data) {
+                  alert("失败")
+              }
+          });
+
+          //显示所有
+          $.ajax({
+              url: "promo/findallpromokind",
+              method: "post",
+              // dataType: "json",
+              // cache:fa lse,
+              success: function (data) {
+                  console.log(data);
+                  var tb = document.getElementById("Md_classSelect");
+                  for (var i = 0; i <data.length ; i++) {
+                      var j=i+1;
+
+
+                     // row.innerHTML +="<td>" +data[i].kindname+ "</td>";
+                      tb.innerHTML += " <option value='"+data[i].kindname+"'>" + data[i].kindname+"</option>";
+
+                  }
+              },
+              error: function (data) {
+                  alert("失败，请检查互联网连接")
+              }
+          });
+
+
+          $("#Md_yes").bind('click', function () {
+              var ifvehicle1=document.getElementById("Md_checkbox1").checked;
+              var ifvehicle2=document.getElementById("Md_checkbox2").checked;
+            //  console.log(ifvehicle1 );
+              if(ifvehicle1){
+                  var  Md_makingstyles="内部制作"
+              }
+              if(ifvehicle2){
+                  var  Md_makingstyles="广告公司制作"
+              }
+
+              var Md_title=document.getElementById("Md_title").value;
+              var Md_mingcheng=document.getElementById("Md_mingcheng").value;
+              var Md_needtime=document.getElementById("Md_needtime").value;
+              var Md_standard=document.getElementById("Md_standard").value;
+              var Md_sum=document.getElementById("Md_sum").value;
+              var Md_company=document.getElementById("Md_company").value;
+              var Md_companyphone=document.getElementById("Md_companyphone").value;
+              var Md_fare=document.getElementById("Md_fare").value;
+              var Md_hostname=document.getElementById("Md_hostname").value;
+              var kindname=document.getElementById("Md_classSelect").value;
+              var Md_unit=document.getElementById("Md_unit").value;
+              var Md_companybody=document.getElementById("Md_companybody").value;
+
+
+
+              var leaflet={
+                  content:Md_standard,
+                  kindname:kindname,
+                  Md_needtime:Md_needtime
+
+              };
+//var l=JSON.stringify(leaflet);
+//console.log(l);
+
+              console.log(leaflet);
+
+
+              $.ajax({
+                  url: 'promo/save',
+                  type: 'POST',
+                  dataType: 'json',
+                  // contentType: "application/json;charset=utf-8",
+                  data:{
+                      mingcheng:Md_mingcheng,
+                      title:Md_title,
+                      makingstyles:Md_makingstyles,
+                      needtime:Md_needtime,
+                      standard:Md_standard,
+                      sum:Md_sum,
+                      company:Md_company,
+                      companyphone:Md_companyphone,
+                      fare:Md_fare,
+                      hostname:Md_hostname,
+                      kindname:kindname,
+                     unit: Md_unit,
+                      companybody: Md_companybody,
+                      user_id:user_id
+                  },
+                  cache:false,
+                  success : function(data) {
+                   if(data==false){
+                       alert ("该标题的宣传品已存在")
+                  }
+                       else{ alert ("成功")
+                           window.location.href="first.html"
+                       }
+
+                  },
+                  error: function (message) {
+                      alert("请填入正确规范的信息");
+                  }
+              });
+
+
+
+          });
+
+
+      }
+
+  </script>
+
+
+
+
+
+
+
+  </body>
+</html>

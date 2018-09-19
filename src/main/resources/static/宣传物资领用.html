@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>宣传物资领用2</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="jumbotron.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+  <body>
+  <!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+  <nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div  class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li id="name"><a href="#">欢迎您</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+      <li class="active"><a href="first.html">我的工作台</a></li>
+      <li><a href="propaganda.html">宣传管理</a></li>
+      <li><a href="#">招募管理</a></li>
+      <li><a href="#">服务管理</a></li>
+      <li><a href="#">统计报表</a></li>
+      <li><a href="#">绩效考核</a></li>
+      <li><a href="#">志愿者管理</a></li>
+      <li><a href="RoleManage.html ">权限管理</a></li>
+      <li><a href="usermanage.html ">用户管理</a></li>
+      <li><a href="#">样式（演示）</a></li>
+    </ul>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+      <li class="breadcrumb-item active"> 宣传物资领用申请</li>
+    </ol>
+
+
+  </div>
+    <h4 style="text-align: center ; padding-top: 10px" >宣传物资领用</h4>
+
+
+    <table id="table1" class="table table-bordered ">
+      <caption style="color: blue" >状态：待审批</caption>
+      <thead  >
+      <tr>
+        <th colspan="2" >申请部门</th>
+        <td colspan="1"><input id="department"type="text" class="form-control"value="宣传部"></td>
+        <th colspan="2">申请时间</th>
+        <td colspan="3"><input id="time" type="text" class="form-control"></td>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th colspan="2" >申请人</th>
+        <td colspan="1"><input id="applyer" type="text" class="form-control"></td>
+        <th colspan="2" >联系电话</th>
+        <td colspan="3"><input id="phone" type="text" class="form-control"></td>
+      </tr>
+      <tr>
+        <th colspan="2">标题</th>
+        <td colspan="6"><input id="title" type="text" class="form-control"></td>
+      </tr>
+      <tr> <th colspan="8"   style="text-align: center" >在以下表格填写需要领用的宣传物资</th>
+      </tr>
+
+      <tr>
+        <th colspan="8">
+          <div class="btn-group pull-right">
+            <button id="Continue"   data-toggle="modal" data-target="#myModal"type="button" class="btn btn-info " >继续添加</button>
+            &nbsp;&nbsp;&nbsp; &nbsp;
+            <button id="Add_btn"  type="button" class="btn btn-info " onclick="tianjia()" >添加</button>
+
+          </div>
+        </th>
+      </tr>
+
+
+      <table id="tb"class="table table-bordered ">
+
+
+      <thead>
+      <tr>
+
+        <th colspan="1"><input type="checkbox"id="checkboxS1" name="isChecked"></th>
+        <th colspan="1">名称</th>
+        <th colspan="1">单位</th>
+        <th colspan="1">数量</th>
+        <th colspan="1" >使用方向</th>
+        <th colspan="1">备注</th>
+        <th colspan="2">操作</th>
+      </tr>
+    </thead>
+      <tbody id="data_tb">
+
+      </tbody>
+      </table>
+
+
+
+      <script type="text/html" id="goods_data">
+        {{each chapter_list as value i}}
+        <tr class="tb-tr">
+          <td><input type='checkbo1x' value='{{value.id}}'/></td>
+          <td>{{value.content}}</td>
+          <td>{{value.title}}</td>
+
+        </tr>
+        {{/each}}
+      </script>
+
+
+
+
+      <!-- 模态框（Modal） -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header" style="color: orange">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+              </button>
+
+              <h4 style="text-align: center ; padding-top: 10px" >在以下表格填写需要领用的宣传物资</h4>
+            </div>
+            <div class="modal-body">
+              <div class="input-group">
+                <span class="input-group-addon" >名称</span>
+                <input id="mingcheng" type="text" class="form-control" placeholder="输入名称">
+              </div>
+
+              <br>
+              <div class="input-group">
+                <span class="input-group-addon">单位</span>
+                <input id="Gd_unit" type="text" class="form-control" placeholder="输入单位">
+              </div>
+              </div>
+              <br>
+              <div class="input-group">
+                <span class="input-group-addon">数量</span>
+                <input id="sum" type="text" class="form-control" placeholder="输入数量">
+              </div>
+              <br>
+              <div class="input-group">
+                <span class="input-group-addon">使用方向</span>
+                <select class="form-control" id="usedirection"  >
+                  <option  selected>请选择...</option>
+                  <option value="宣传（献血、知识）手册">宣传（献血、知识）手册</option>
+                  <option value="宣传海报"> 宣传海报</option>
+                </select>
+              </div>
+              <br><div class="input-group">
+              <span class="input-group-addon">备注</span>
+              <input id="beizhu1" type="text" class="form-control" placeholder="输入备注">
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button id="baocun"type="button" class="btn btn-primary" onclick="save()">保存</button>
+              <!--<button id="jixubaocun" type="button" class="btn btn-primary" onclick="jixusave()">继续保存</button>-->
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+
+
+</tbody>
+
+    </table>
+
+
+  <table class="table table-bordered ">
+      <tr>
+        <th colspan="2">备注</th>
+        <td colspan="6"><input type="text" class="form-control"></td>
+      </tr>
+      <tr>
+        <th colspan="2">领导审批意见</th>
+        <td colspan="6"> <textarea class="form-control" rows="3"></textarea></td>
+      </tr>
+
+    </table>
+
+<div>
+    <p style="text-align: center">
+    <a ><button type="button" class="btn btn-info " onclick="apply()">确认申请</button></a>
+    &nbsp;&nbsp;&nbsp; &nbsp;
+    <a ><button id="quxiao"type="button" class="btn btn-info ">取消</button></a>
+  </p>
+  </div>
+
+
+
+  <script src="js/jquery-3.1.1.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/template.js"></script><!--显示 表格的js-->
+  <script type="text/javascript">
+    var onegoods_id=null;
+
+
+    user_id= localStorage.getItem("userid");
+    if(user_id==""||user_id ==null)
+    {
+        alert("请先登录");
+        window.location.href='first.html';
+
+    }else {
+        var uname= localStorage.getItem("username");
+        if( localStorage.getItem("username")!=="") {
+
+            x=document.getElementById("name");
+            x.innerHTML = "Hi," + uname+" ! ";
+            x.style.color="#337ab7";
+        }
+
+        var d = new Date();
+        var time = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+
+        document.getElementById("Continue").setAttribute("disabled", true);
+
+        $.ajax({
+            url: 'leaflet/iduser',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                id: user_id
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                document.getElementById("applyer").value = data.username;
+               // document.getElementById("department").value = data.department.departmentname;
+                document.getElementById("phone").value = data.phone;
+                document.getElementById("time").value = time;
+
+
+            },
+            error: function (data) {
+                alert("失败")
+            }
+        });
+    }
+
+function tianjia() {
+
+
+    var title=document.getElementById("title").value;
+    console .log (title);
+    if(title==""||title==null)
+    {
+        alert("请先填写标题");
+        $("#myModal ").modal('hide');
+    }
+else {
+
+        $.ajax({
+            url: 'goods/OnegoodsSave',
+            type: 'POST',
+            dataType: 'json',
+            // contentType: "application/json;charset=utf-8",
+            data: {
+                title: title,
+                user_id: user_id
+            },
+            cache: false,
+            success: function (data) {
+                console.log(data);
+                if(data==null){
+                    alert ("标题已存在，请重新填写");
+                    window.location.reload();
+                }
+                $("#myModal").modal();
+                onegoods_id = data.id;
+                document.getElementById("Add_btn").setAttribute("disabled", true);
+                document.getElementById("Continue").disabled = false;
+            },
+            error: function (message) {
+                alert("失败，数量必须为整数");
+            }
+        });
+
+    }
+
+}
+
+
+
+
+  function save() {
+      var mingcheng = document.getElementById("mingcheng").value;
+      var sum = document.getElementById("sum").value;
+      var beizhu1 = document.getElementById("beizhu1").value;
+      var usedirection = document.getElementById("usedirection").value;
+      var Gd_unit=document.getElementById("Gd_unit").value;
+
+      var Oneggoods = {
+          mingcheng: mingcheng,
+          sum: sum,
+          beizhu: beizhu1
+      };
+
+      console.log(Oneggoods);
+
+
+      $.ajax({
+          url: 'goods/goodsSave',
+          type: 'POST',
+          dataType: 'json',
+          // contentType: "application/json;charset=utf-8",
+          data: {
+              mingcheng: mingcheng,
+              sum: sum,
+              usedirection: usedirection,
+              beizhu: beizhu1,
+              onegoods_id: onegoods_id,
+              unit: Gd_unit,
+          },
+          cache: false,
+          success: function (data) {
+              console.log(data);
+              $("#myModal").modal('hide');
+              $("#tb tr:not(:first)").empty();
+              var tb = document.getElementById("tb");
+              for (var i = 0; i < data.goodss.length; i++) {
+                  var j = i + 1;
+                  var row = tb.insertRow(tb.rows.length);
+                  var j=i+1;
+                  var row = tb.insertRow(tb.rows.length);
+                  row.innerHTML += "<td>" + j + "</td>";
+                  //     row.innerHTML += "<td>" +"<a href='IMreview.html?id="+data[i].id+"'>"+data[i].title +"</a>"+ "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].mingcheng + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].unit +"</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].sum + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].usedirection + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].beizhu + "</td>";
+                  row.innerHTML += "<td>" + data.goodss[i].time + "</td>";
+
+              }
+          },
+          error: function (message) {
+              alert("失败，数量必须为整数");
+          }
+      });
+  }
+function apply() {
+    window.location.href="propaganda.html";
+
+}
+
+      $("#quxiao").bind('click', function () {
+          console.log(onegoods_id );
+          $.ajax({
+              url: 'goods/delete',
+              type: 'POST',
+              dataType: 'json',
+              // contentType: "application/json;charset=utf-8",
+              data:{
+
+                  onegoods_id:onegoods_id
+              },
+              cache:false,
+              success : function(data) {
+                  console.log(data);
+                  window.location.href="propaganda.html";
+
+              },
+              error: function () {
+                  window.location.href="propaganda.html";
+
+
+              }
+          });
+
+
+      });
+
+
+
+
+
+</script>
+
+  </body>
+</html>

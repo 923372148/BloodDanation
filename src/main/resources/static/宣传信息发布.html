@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>宣传信息发布</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="jumbotron.css" rel="stylesheet">
+
+  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+  <div  class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="name"><a href="#">欢迎您</a></li>
+      </ul>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+<div class="container-fluid">
+  <ul class="nav nav-justified"style="background-color: #749bed">
+    <li class="active"><a href="first.html">我的工作台</a></li>
+    <li><a href="propaganda.html">宣传管理</a></li>
+    <li><a href="#">招募管理</a></li>
+    <li><a href="#">服务管理</a></li>
+    <li><a href="#">统计报表</a></li>
+    <li><a href="#">绩效考核</a></li>
+    <li><a href="#">志愿者管理</a></li>
+    <li><a href="RoleManage.html ">权限管理</a></li>
+    <li><a href="usermanage.html ">用户管理</a></li>
+    <li><a href="#">样式（演示）</a></li>
+  </ul>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+    <li class="breadcrumb-item active"> 宣传信息发布申请表</li>
+  </ol>
+  <h4 style="text-align: center;padding-top: 10px">宣传信息发布申请表</h4>
+  <table class="table table-bordered">
+    <caption style="color: blue">状态：草稿</caption>
+    <thead>
+    <tr>
+      <th>申请部门</th>
+      <td><input id="department" type="text" class="form-control" value="宣传部"></td>
+      <th>申请时间</th>
+      <td><input id="time" type="text" class="form-control"></td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th>申请人</th>
+      <td><input id="applyer" type="text" class="form-control"></td>
+      <th>联系电话</th>
+      <td><input id="phone" type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th>标题</th>
+      <td  colspan="3"><input  id="title"type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th>类别</th>
+      <td  colspan="3">
+        <select class="form-control" id="classSelect1">
+          <option selected>全部</option>
+
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <th>发布媒介（对象）</th>
+      <td id="vehicle"colspan="3">
+        <input type="checkbox"id="checkbox1">南方卫视
+        &nbsp;&nbsp;&nbsp;
+        <input type="checkbox"id="checkbox2">东方卫视
+      </td>
+    </tr>
+    <tr>
+
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td colspan="3"><textarea id="content"class="form-control" rows="3"></textarea></td>
+    </tr>
+    <tr>
+      <th>备注</th>
+      <td colspan="3"><input type="text" class="form-control"></td>
+    </tr>
+    <tr>
+      <th>领导审批意见</th>
+      <td colspan="3"> <textarea class="form-control" rows="3"></textarea></td>
+    </tr>
+
+
+    </tbody>
+  </table>
+  <p style="text-align: center">
+    <a><button id="yes"type="button" class="btn btn-info ">确认申请</button></a>
+    &nbsp;&nbsp;&nbsp; &nbsp;
+    <a href="propaganda.html"><button type="button" class="btn btn-info ">取消</button></a>
+  </p>
+</div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+user_id= localStorage.getItem("userid");
+if(user_id==""||user_id ==null)
+{
+alert("请先登录");
+window.location.href='first.html';
+
+}else {
+
+    var uname= localStorage.getItem("username");
+    if( localStorage.getItem("username")!=="") {
+
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+
+
+    var d = new Date();
+    var time = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+
+    $.ajax({
+        url: "leaflet/findallcategories",
+        method: "post",
+        // dataType: "json",
+        // cache:fa lse,
+        success: function (data) {
+            console.log(data);
+            //  document.getElementById("Num").innerHTML=data.length;
+            var t = document.getElementById("classSelect1");
+            for (var i = 0; i <data.length ; i++) {
+                var j=i+1;
+                t.innerHTML += " <option value='"+data[i].kind+"'>" + data[i].kind+"</option>";
+            }
+        },
+        error: function (data) {
+
+        }
+    });
+
+
+    $.ajax({
+        url: 'leaflet/iduser',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: user_id
+        },
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            document.getElementById("applyer").value=data.username;
+          //  document.getElementById("department").value=data.department.departmentname;
+            document.getElementById("phone").value=data.phone;
+            document.getElementById("time").value=time;
+
+
+
+        },
+        error: function (data) {
+            alert("失败")
+        }
+    });
+
+    $("#yes").bind('click', function () {
+        var ifvehicle1=document.getElementById("checkbox1").checked;
+        var ifvehicle2=document.getElementById("checkbox2").checked;
+        console.log(ifvehicle1 );
+        if(ifvehicle1){
+          var  vehicle="南方卫视"
+        }
+        if(ifvehicle2){
+            var  vehicle="东方卫视"
+        }
+
+
+var content=document.getElementById("content").value;
+        var title=document.getElementById("title").value;
+    var kind=document.getElementById("classSelect1").value;
+var leaflet={
+    content:content,
+    title:title,
+    vehicle:vehicle
+
+};
+if(title==null||title=="")
+{
+   alert(" 请输入标题");
+}
+else{
+var l=JSON.stringify(leaflet);
+console.log(l);
+console.log(kind);
+console.log(leaflet);
+        $.ajax({
+            url: 'leaflet/save',
+            type: 'POST',
+            dataType: 'json',
+         // contentType: "application/json;charset=utf-8",
+            data:{
+                content:content,
+                title:title,
+                vehicle:vehicle,
+               kind:kind,
+                user_id:user_id
+            },
+            cache:false,
+            success : function(data) {
+
+                if(data==false){
+                    alert("标题已存在");
+                }
+                else{ alert("成功");
+                    window.location.href="first.html";
+                }
+            },
+            error: function (message) {
+                alert("失败");
+            }
+        });
+
+
+}
+    });
+
+
+}
+
+    </script>
+</body>
+</html>

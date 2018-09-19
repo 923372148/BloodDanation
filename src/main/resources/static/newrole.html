@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="regwork.html"><i class="fa fa-home"></i>为人民服务</a>
+        </div>
+
+        <div class="header-right">
+            <div class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+                <li > <a href="#"onclick="quit()">退出登录</a></li>
+                <!--<h5><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +984 515 4945 </h5>-->
+            </div>
+
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <!--<li>-->
+                    <!--<a href="blank.html"><i class="fa fa-square-o "></i>登录界面</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="#"><i class="fa fa-desktop "></i>领导界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="place.html"><i class="fa fa-toggle-on"></i>分配时间地点员工</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>员工界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="workforblood.html"><i class="fa fa-coffee"></i>处理志愿者献血表</a>
+                        </li>
+                        <li>
+                            <a href="workplan.html"><i class="fa fa-flash "></i>查看工作计划</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>管理员界面 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+
+                        <li>
+                            <a href="newrole.html"><i class="fa fa-flash "></i>权限管理</a>
+                        </li>
+                        <li>
+                            <a href="newpeople.html"><i class="fa fa-flash "></i>角色管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="history.html"><i class="fa fa-square-o "></i>统计</a>
+                </li>
+                <li>
+                    <a href="donorshow.html"><i class="fa fa-square-o "></i>志愿者信息一览</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+
+</div>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">角色</h1>
+                <div class="btn-group">
+                    <button class="btn btn-success" data-toggle="modal" data-target="#myModal">添加角色</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- /. ROW  -->
+        <div class="col-md-12" >
+            <div class="table-responsive">
+                <table id="tablerole" class="table">
+                    <thead>
+                    <tr>
+                        <!--<th>#</th>-->
+                        <!--<th>角色名</th>-->
+                        <!--<th>角色功能</th>-->
+                    </tr>
+                    </thead>
+                    <tbody id="data_tb">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--/.ROW-->
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>
+<!-- /. PAGE WRAPPER  -->
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="POST" id="Form" name="Form" enctype="multipart/form-data" action="/manage/save">
+            <div class="modal-content">
+                <div class="modal-header" style="color: orange">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        添加角色
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group">
+                        <table class="table table-bordered">
+
+                            <thead>
+                            <tr>
+                                <th colspan="2">角色名</th>
+                                <td colspan="2"><input id="rolename"type="text" class="form-control"></td>
+
+
+                                <th colspan="2">角色描述</th>
+                                <td colspan="2"><input id="roledescription"type="text" class="form-control"></td>
+                            </tr>
+                            <tr>
+                                <th>权限</th>
+                                <td id="vehicle"colspan="3">
+                                    <input type="checkbox"id="checkbox1">是否能处理普通操作
+                                    &nbsp;&nbsp;&nbsp;
+                                    <input type="checkbox"id="checkbox2">能否分配人员地点
+                                    <input type="checkbox"id="checkbox3">能否改变角色信息
+
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                            </thead>
+
+                        </table>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button -type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <a type="button" class="btn btn-primary" onclick="save()">保存</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </form>
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!--<script src="js/jquery-3.1.1.min.js"></script>-->
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+<script type="text/javascript">
+     var work_id= localStorage.getItem("workid");
+    console.log(work_id);
+    if(!work_id){
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+
+    }
+    if(work_id=="" && work_id==null)
+    {
+        alert("请先注册登录");
+        window.location.href="regwork.html"
+    }
+    else{
+        var uname=localStorage.getItem("workname");
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+
+loadroledata ();
+
+
+    function save(){
+var ifchuli="0";
+        var  ifplace="0";
+        var  ifchangrole="0";
+
+      var  name = $("#rolename").val();
+        var description = document.getElementById("roledescription").value;
+        var ifvehicle1 = document.getElementById("checkbox1").checked;
+        var ifvehicle2 = document.getElementById("checkbox2").checked;
+        var ifvehicle3 = document.getElementById("checkbox3").checked;
+        console.log(ifvehicle1);
+        if (ifvehicle1) {
+            ifchuli = "1";
+        }
+        else {
+            ifchuli= "0"
+        }
+        if (ifvehicle2) {
+            ifplace= "1";
+        }
+        else {
+            ifplace= "0";
+        }
+        if (ifvehicle3) {
+            ifchangrole= "1";
+        }
+        else {
+            ifchangrole = "0";
+        }
+        var role = {
+            rolename: name,
+            description: description,
+            ifchangrole:ifchangrole ,
+            ifchuli:ifchuli ,
+            ifplace:ifplace
+
+        }
+        console.log(role);
+
+        $.ajax({
+            url: 'Role/saverole',
+            type: 'POST',
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(role),
+            cache: false,
+            success: function (data) {
+                if (data == false) {
+                    alert("该角色已存在")
+
+                }
+                else {
+                    alert("申请成功");
+                    $('#myModal').modal('hide');
+                    $("#rolename").val("");
+                    $("#roledescription ").val("");
+
+
+                    loadroledata ();
+
+
+
+
+
+                }
+            },
+            error: function (message) {
+
+            }
+        });
+
+    }
+
+
+
+
+
+
+
+    function   loadroledata(){
+        $.ajax({
+        url: "Role/findallrole",
+        type: 'POST',
+        dataType: 'json',
+//        data: {
+//            user_id: user_id
+//        },
+        success: function (data) {
+
+            console.log(data);
+         //   document.getElementById("havedoneNum").innerHTML = data.length;
+            var tb = document.getElementById("tablerole");
+            $("#tablerole tr").empty();
+                var tr=tb.insertRow(tb.rows.length);
+            tr.innerHTML+="<th>" +"序号"+"</th>";
+                tr.innerHTML+="<th>" +"角色名"+"</th>";
+                tr.innerHTML+="<th>" +"角色功能"+"</th>";
+                tr.innerHTML+="<th>" +"删除角色"+"</th>";
+            tr.innerHTML+="<th>" +"增加人员"+"</th>";
+               if(data.length>0){
+            for (var i = 0; i < data.length; i++) {
+                var j = i + 1;
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<td>" + j + "</td>";
+
+                row.innerHTML += "<td>" + data[i].rolename+ "</td>";
+
+                row.innerHTML += "<td>" + data[i].description+ "</td>";
+
+                row.innerHTML += "<td><button id='"+data[i].id+"' onclick='del(this.id)' name='del' type='button' class='btn btn-default'>" +
+                    " <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+                row.innerHTML += "<td>" + "<a href=newpeople.html?id=" + data[i].id + "'>" +
+                    "<button type='button' class='btn btn-success  oprate' data-placement='bottom' title='增加人员' data-toggle='tooltip'><i class='fa fa-plus fa-1x'></i></button></a>" + "</td>";
+//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
+//                row.innerHTML += "<td>" + data[i].time + "</td>";
+            }
+
+        }
+    },
+        error: function (data) {
+            // alert("你还没有你的已办事项")
+        }
+    });
+
+
+
+    }
+
+    function del(id) {
+        console.log(id);
+
+            $.ajax({
+                url: 'Role/delete',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id: id,
+                },
+                cache: false,
+                success: function (data) {
+                    alert("删除成功");
+                    window.location.reload();
+
+                },
+                error: function (data) {
+                    alert("删除失败！请先删除角色内的所有人员！");
+                }
+            })
+
+    }
+    function quit() {
+
+        localStorage.setItem("workname","");
+        localStorage.setItem("workid","");
+        location.reload();
+
+    }
+</script>
+<script>
+    //弹出框设置隐藏
+    $(function () { $('#myModal').modal('hide')});
+</script>
+
+</body>
+</html>

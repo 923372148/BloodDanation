@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宣传信息类别管理</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/pagelistyle.css">
+</head>
+<body >
+
+
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: white" href="#">XX血液中心无XX血液中心无偿献血综合服务平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+        <li class="active" ><a href="first.html">我的工作台</a></li>
+        <li><a href="propaganda.html">宣传管理</a></li>
+        <li><a href="#">招募管理</a></li>
+        <li><a href="#">服务管理</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">绩效考核</a></li>
+        <li><a href="#">志愿者管理</a></li>
+        <li><a href="RoleManage.html ">权限管理</a></li>
+        <li><a href="usermanage.html ">用户管理</a></li>
+        <li><a href="#">样式（演示）</a></li>
+    </ul>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+        <li class="breadcrumb-item active"> 宣传信息类别管理</li>
+    </ol>
+
+
+            <form class="form-inline">
+                <div class="form-group input-group-sm">
+                    <label for="category">类别名称：</label>
+                    <input id="category"type="text" class="form-control">
+                </div>
+                <div class="btn-group pull-right" role="group">
+                    <button id="search"type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-search">查询</span>
+                    </button>
+                    <button id="clean" type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-repeat">重置</span>
+                    </button>
+                </div>
+            </form>
+            <br>
+            <button type="button" onclick="add()" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus-sign">新建</span>
+            </button>
+            <br><br>
+            <table id="result" class="table table-bordered text">
+                <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>名称（内容）</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+            </table>
+
+            <div class="piclist">
+                <div class="fydiv">
+                    <ul class="fenye">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    var sta=true;
+    var datas;
+//删除
+    var uname= localStorage.getItem("username");
+    if( localStorage.getItem("username")!=="") {
+
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }user_id= localStorage.getItem("userid");
+    var flag=1;
+    $.ajax({
+        url: 'leaflet/iduser',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: user_id
+        },
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            //   console.log(data.roles[0].name);
+            for(var i=0;i<data.roles.length;i++) {
+                console.log(data.roles[i].name == "领导");
+
+                if (data.roles[i].name == "领导") {
+                    // document.getElementById("agree").setAttribute("disabled", false);
+                    flag=0;
+
+                    console.log("变")
+
+                }
+            }
+        },
+        error: function (data) {
+
+        }
+    });
+
+    function del(id) {
+        console.log(id);
+        if (flag !== 0) {
+            alert("你不是领导，不能删除")
+        }
+        else{
+            $.ajax({
+                url: 'leaflet/delete2',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    id: id,
+                },
+                cache: false,
+                success: function (data) {
+                    window.location.reload();
+
+                },
+                error: function (data) {
+                    alert("删除失败！请先删除该类下的申请！");
+                }
+            })
+    }
+    }
+    //保存
+    function save() {
+        var name=$("#input_name").val();
+        name=$.trim(name);
+        if(name.length<=0){
+            alert("输入不能为空！");
+        }
+        else {
+            console.log(name);
+            $.ajax({
+                url: 'leaflet/savecategory',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    kind: name
+                },
+                cache: false,
+                success: function (data) {
+                    window.location.reload();
+                    sta=true;
+                },
+                error: function (data) {
+                    alert("添加失败")
+                }
+            })
+        }
+    }
+
+    //显示所有
+    $.ajax({
+        url: "leaflet/findallcategories",
+        method: "post",
+        success: function (data) {
+            datas=data;
+            getPage(1);
+
+        },
+        error: function (data) {
+            alert("失败，请检查互联网连接")
+        }
+    });
+
+    //清除
+    $("#clean").bind('click',function (){
+
+        $("#category").val("");
+    });
+//查询
+    $("#search").bind('click', function () {
+
+
+        var kind=document.getElementById("category").value;
+        kind=$.trim(kind);
+console.log(kind);
+        $.ajax({
+            url: 'leaflet/searchcategory',
+            type: 'POST',
+            dataType: 'json',
+            // contentType: "application/json;charset=utf-8",
+            data:{
+               kind:kind
+            },
+            cache:false,
+            success : function(data) {
+                console.log(data);
+                var tb = document.getElementById("result");
+                $("#result tr:not(:first)").empty();
+                for (var i = 0; i <1; i++) {
+                    var j=i+1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<th>" + j + "</th>"
+                    + "<td>" +data.kind+ "</td>"
+                    + "<td><button id='"+data.id+"' onclick='del(this.id)' name='del' type='button' class='btn btn-default'> <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+
+
+                }
+                $(".fenye").empty();
+                paintPage(1,1);
+            },
+            error: function (message) {
+                alert("查无此类！");
+            }
+        });
+    });
+
+    //当前页的表格
+    function getPage(pn){
+        var dataCount=datas.length;//总数据条数
+        var pageSize=8;//每页显示条数
+        var pageCount= Math.ceil(dataCount / pageSize);//总页数
+        if(pn==0||pn>pageCount){
+            return;
+        }
+        paintPage(pageCount,pn);   //绘制页码
+        var startPage = pageSize * (pn - 1);
+        var tb = document.getElementById("result");
+        $("#result tr:not(:first)").empty();
+        if (pageCount == 1) {     // 当只有一页时
+            for (var j = 0; j < dataCount; j++) {
+                var k = j + 1;
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<th>" + k + "</th>"
+                    + "<td>" + datas[j].kind + "</td>"
+                    + "<td><button id='" + datas[j].id + "' onclick='del(this.id)' name='del' type='button' class='btn btn-default'> <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+            }
+        }else {      // 当超过一页时
+            $("#result tr:not(:first)").empty();
+            var endPage = pn<pageCount?pageSize * pn:dataCount;
+            for (var j = startPage; j < endPage; j++) {
+                var k = j + 1;
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<th>" + k + "</th>"
+                    + "<td>" + datas[j].kind + "</td>"
+                    + "<td><button id='" + datas[j].id + "' onclick='del(this.id)' name='del' type='button' class='btn btn-default'> <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+            }
+        }
+    }
+
+    function paintPage(number,currNum)  //number 总页数,currNum 当前页
+    {
+        var pageUl=$(".fenye");
+        pageUl.empty();
+        var ulDetail="";
+
+        if(number==1){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:void(0)\">上一页</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:void(0)\">下一页</a></li>";
+        }else if(number==2){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage(1)\">上一页</a></li>"+
+                "<li class=\"numb"+choosele(currNum,1)+"\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"numb"+choosele(currNum,2)+"\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage(2)\">下一页</a></li>";
+        }else if(number==3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb"+choosele(currNum,1)+"\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"numb"+choosele(currNum,2)+"\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"numb"+choosele(currNum,3)+"\"><a href=\"javascript:getPage(3)\">3</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">下一页</a></li>";
+        }else if(number==currNum&&currNum>3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-2)+")\">"+parseInt(currNum-2)+"</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">"+parseInt(currNum-1)+"</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage("+currNum+")\">"+currNum+"</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+currNum+")\">下一页</a></li>";
+        }else if(currNum==1&&number>3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:void(0)\">上一页</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:void(0)\">1</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage(3)\">3</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage(2)\">下一页</a></li>";
+        }else{
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">"+parseInt(currNum-1)+"</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage("+currNum+")\">"+currNum+"</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">"+parseInt(currNum+1)+"</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">下一页</a></li>";
+        }
+
+        $(".fenye").append(ulDetail);
+
+    }
+
+    function choosele(num,cur){
+        if(num==cur){
+            return " choose";
+        }else{
+            return "";
+        }
+    }
+
+
+    //取消
+    function cancel() {
+        sta=true;
+        $("#result tr:last").remove();
+
+    }
+
+//添加
+function   add(content){
+    /* newline=document.all.table1.insertRow();*/
+    if(sta == true){
+        document.all.result.insertRow().innerHTML=
+            " <th colspan='1'></th>"+
+            "<td colspan='1'><input id='input_name' type='text' class='form-control'></td>" +
+            "<td colspan='1'><button  type='button' class='btn btn-default' onclick='save()'> 保存</button> <button  type='button' class='btn btn-default' onclick='cancel()'> 取消</button></td>"
+        sta=false;
+    }
+    else {
+        alert("请先保存当前信息！");
+    }
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

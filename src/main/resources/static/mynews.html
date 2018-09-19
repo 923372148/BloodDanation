@@ -1,0 +1,555 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>index</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Super Bikes  Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
+
+
+</head>
+<body bgcolor=＂rgba(62, 16, 16,0.39)＂>
+
+	<div class="header">
+		<div class="container">
+				<div class="header-top">
+					<div class="logo">
+						<h1 style="text-align:center"><a href="index.html">欢迎来到无偿献血网上服务系统</a></h1>
+
+					</div>
+
+					<div class="nav navbar-nav navbar-right">
+						<li id="name"><a href="#">欢迎您</a></li>
+						<li id="login"><a href="#" onclick="Login()">登录</a></li>
+						<li id="reg"> <a href="#"onclick="Register()">注册</a></li>
+						<li > <a href="#"onclick="quit()">退出</a></li>
+						<!--<h5><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> +984 515 4945 </h5>-->
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			<div class="header-bottom">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav cl-effect-16">
+								<li ><a href="index.html">服务首页<span class="sr-only">(current)</span></a></li>
+
+								<li class="dropdown active">
+									<a href="services.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">我要参加<span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										<li><a href="toplace.html">活动报名</a></li>
+
+										<li><a href="modify.html">修改地点</a></li>
+									</ul>
+								</li>
+
+								<li ><a href="news.html">服务信息一览</a></li>
+								<li><a href="tips.html">献血注意事项</a></li>
+								<li><a href="mynews.html">我的信息</a></li>
+							</ul>
+						</div><!-- /.navbar-collapse -->
+					</div><!-- /.container-fluid -->
+				</nav>
+			</div>
+		</div>
+	</div>
+		<!--end header-section-->
+			<!--<div class="header-banner">-->
+				<!--<div class="container">-->
+					<!--<h2> gallery </h2>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--&lt;!&ndash;end header-section&ndash;&gt;-->
+		<!--&lt;!&ndash;gallery&ndash;&gt;-->
+		<!--<div class="content">-->
+			<!--<div class="gallery-section">-->
+					<!--<div class="container">-->
+					<!--<div class="gallery-grids">-->
+
+	<!---->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--gallery-->
+
+
+
+
+
+
+<div style="color:#350808;background-color: rgba(62, 16, 16,0.39);">
+		<table class="table table-bordered " style="color:#350808; width:70%;align:center;margin:1px auto;">
+			<caption style="color: blue" ></caption>
+			<thead style="color:#350808;">
+			<tr>
+				<th>姓名</th>
+				<td ><input id="department" type="text" class="form-control"  value="宣传部"></td>
+				<th>联系电话</th>
+				<td><input id="time" type="text" class="form-control"></td>
+
+			</tr>
+			</thead>
+
+			<tbody>
+
+			<tr align="center">
+				<th align="center">身份证号码</th>
+				<td colspan="3"><input  id="Md_title" type="text" class="form-control"></td>
+			</tr>
+
+
+			<tr>
+				<th>血型/th>
+				<td colspan="1">
+					<select class="form-control" id="Md_classSelect">
+						<option selected>全部</option>
+
+					</select>
+				</td>
+
+
+			<tr  align="center">
+				<th  align="center">要求完成时间</th>
+				<td  align="center"><input id="Md_needtime" type="text" class="form-control"></td>
+
+			</tr>
+			<tr>
+				<th>单位</th>
+				<td><input id="Md_unit" type="text" class="form-control"></td>
+
+			</tr>
+			<tr>
+				<th>广告公司名称</th>
+				<td><input  id="Md_company"  type="text" class="form-control"></td>
+			</tr>
+			<tr>
+				<th>广告公司联系人</th>
+				<td><input id="Md_companybody" type="text" class="form-control"></td>
+				<th>广告公司联系方式</th>
+				<td><input id="Md_companyphone" type="text" class="form-control"></td>
+
+			</tr>
+
+
+			<tr>
+				<th>费用（元）</th>
+				<td><input id="Md_fare" type="text" class="form-control"></td>
+
+
+			</tr>
+
+
+
+			</tbody>
+
+		</table>
+		<p style="text-align: center">
+			<a ><button id="Md_yes" type="button" class="btn btn-info ">确认申请</button></a>
+			&nbsp;&nbsp;&nbsp; &nbsp;
+			<a href="propaganda.html"><button type="button" class="btn btn-info ">取消</button></a>
+		</p>
+
+		</div>
+	</div>
+
+			<!--footer-->
+			<div class="footer-section">
+				<div class="container">
+					<div class="footer-top">
+						<p> 本系统供学术学习使用，不用做商业用途
+						联系我们：18898694954</p>
+						<p> 地址：陆丰市南迪路</p>
+					</div>
+
+				</div>
+			</div>
+			<!--footer-->
+		<div class="modal" id="mymodal">
+			<div class="modal-dialog">
+				<div class="modal-content" >
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">登录</h4>
+					</div>
+
+					<div class="modal-body" >
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">账号</label>
+								<div class="col-sm-6">
+									<input id="input_Lname" type="text" class="form-control"  placeholder="请输入账号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">密码</label>
+								<div class="col-sm-6">
+									<input id="input_Lpassword" type="password" class="form-control"  placeholder="请输入密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox">请记住我
+										</label>
+										<a class="remb">忘记密码？</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button id="lgbtn"type="submit" class="btn btn-primary">登录</button>
+								</div>
+								<div class="col-sm-offset-2 col-sm-10">
+
+
+								</div>
+							</div>
+
+
+						</form>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<!-- /.注册的modal -->
+		<div class="modal" id="registermodal">
+			<div class="modal-dialog">
+				<div class="modal-content" >
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">注册</h4>
+					</div>
+
+					<div class="modal-body" >
+						<form class="form-horizontal" role="form">
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">账号</label>
+								<div class="col-sm-6">
+									<input id="zhname" type="text" class="form-control"  placeholder="请输入账号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">密码</label>
+								<div class="col-sm-6">
+									<input id="input_Rpassword" type="password" class="form-control"  placeholder="请输入密码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">手机</label>
+								<div class="col-sm-6">
+									<input id="input_telphone" type="text" class="form-control"  placeholder="请输入手机号码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">身份证</label>
+								<div class="col-sm-6">
+									<input id="input_idcard" type="text" class="form-control"  placeholder="请输入身份证">
+								</div>
+							</div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">姓名</label>
+								<div class="col-sm-6">
+									<input id="input_name" type="text" class="form-control"  placeholder="请输入姓名">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<div class="checkbox">
+										<label>
+											<input type="checkbox">请记住我
+										</label>
+										<a class="remb">忘记密码？</a>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button id="rebtn"type="submit" class="btn btn-primary">注册</button>
+								</div>
+								<div class="col-sm-offset-2 col-sm-10">
+
+
+								</div>
+							</div>
+
+
+						</form>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div>
+
+
+
+
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+var   user_id= localStorage.getItem("userid");
+
+
+if(user_id!=="" || user_id!==null)
+{
+
+    var u1name=localStorage.getItem("username");
+    alert(u1name);
+    x=document.getElementById("name");
+    x.innerHTML = "Hi," + u1name+" ! ";
+    x.style.color="#337ab7";
+}
+console.log(user_id);
+
+function Login(){
+		if(user_id!=="" && user_id!==null)
+		{
+		alert("请先退出");
+
+		}
+		else {
+		//            document .getElementById("loginbtn").value=userName ;
+		//            $("h4").html(userName );
+		$("#mymodal").modal();
+		$("#lgbtn").bind('click', function () {
+		var userName = $("#input_Lname ").val();
+		var userPassword = $("#input_Lpassword").val();
+
+		var donor = {
+		dname: userName,
+		dpassword: userPassword,
+
+		};
+		console.log(donor);
+
+		//遍历
+
+		//遍历
+		if (userName == "" || userPassword == "") {
+		alert("姓名密码不能为空");
+		}
+		else {
+		$.ajaxSettings.async = false;
+
+		$(function () {
+		$.ajax({
+		url: "User/regist",
+		method: "post",
+		contentType: "application/json;charset=utf-8",
+		data: JSON.stringify(donor),
+		//    dataType: "json",
+		// cache:fa lse,
+		success: function (data) {
+		console.log(data);
+		if (data == "4") {
+		alert("登录失败。密码错误");
+		}
+		if (data == "3") {
+		alert("登录失败，用户名不存在");
+		}
+		else {
+
+
+		localStorage.setItem("username", userName);
+		$("#mymodal ").modal('hide');
+		document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
+		//alert("你的ID为" + data);
+		localStorage.setItem("userid", data);
+	//	loadLeafletData();
+
+		}
+		},
+		error: function (data) {
+		alert("失败，请检查互联网连接")
+		}
+		});
+		})
+		}//else{
+		// alert("标题已经存在");
+		// }
+
+		})
+
+
+		}
+
+
+		};
+		function Register(){
+
+		if(user_id!==""&&user_id!==null)
+		{
+		alert("请先退出");
+
+		}
+		else {
+		$("#registermodal ").modal();
+
+		$("#rebtn").bind('click', function () {
+
+            var userName=document.getElementById("zhname").value;
+
+		var userPassword = document.getElementById("input_Rpassword").value;
+            var usertelphone= document.getElementById("input_telphone").value;
+            var useridcard= document.getElementById("input_idcard").value;
+            var xingming= document.getElementById("input_name").value;
+            var u1=document.getElementById("zhname").value;
+
+//		var donor = {
+//            dname:userName,
+//				dpassword: userPassword,
+//		dtelphone: usertelphone,
+//			didcard:useridcard,
+//			dxingming:xingming
+//
+//
+//		};
+console.log(userName );
+		//console.log(donor);
+           // console.log(u1 );
+
+		//遍历
+
+		//遍历
+		if (userName == "" || userPassword == "" ||useridcard== "") {
+		alert("不能有空");
+		}
+		else {
+		//$.ajaxSettings.async = false;
+
+		$(function () {
+		    $.ajaxSettings.async = false;
+		$.ajax({
+		url: "Donor/save",
+            type: 'POST',
+      //      async:false,
+          //  dataType: 'json',
+       //   contentType: "application/json;charset=utf-8",
+            data:{
+            dpassword: userPassword,
+            dtelphone: usertelphone,
+            didcard:useridcard,
+            dxingming:xingming,
+                aname:userName
+
+
+		},
+		//   dataType: "json",
+		 cache:false,
+		success: function (data) {
+		// geid=data.name;
+		// geuuid=data.password;
+		// biaotibianli.push(geid);
+		alert("稍等");
+
+		if (data == "1") {
+		alert("用户名已存在");
+		}
+		else {
+		alert("注册成功");
+		localStorage.setItem("username", userName);
+
+		$("#registermodal ").modal('hide');
+		document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
+		//alert("你的ID为" + data);
+		localStorage.setItem("userid", data);
+		}
+
+
+		},
+		error: function (data) {alert("注册shibai");
+
+		}
+		});
+		})
+		}//else{
+		// alert("标题已经存在");
+		// }
+
+		})
+
+
+		}
+
+
+		}
+            function quit() {
+
+                localStorage.setItem("username","");
+                localStorage.setItem("userid","");
+                location.reload();
+
+            }
+
+
+            function loadnews() {
+			$.ajax({
+
+                url: "Place/findall",
+                type: 'POST',
+                dataType: 'json',
+       data: {
+         donor_id: user_id
+        },
+                success: function (data) {
+
+                    console.log(data);
+                    //   document.getElementById("havedoneNum").innerHTML = data.length;
+                    var tb = document.getElementById("tplace");
+                    $("#tplace tr").empty();
+                    var tr=tb.insertRow(tb.rows.length);
+                    tr.innerHTML+="<th>" +"序号"+"</th>";
+                    tr.innerHTML+="<th>" +"地点"+"</th>";
+                    tr.innerHTML+="<th>" +"时间"+"</th>";
+
+
+					tr.innerHTML+="<th>" +"增加人员"+"</th>";
+                    tr.innerHTML+="<th>" +"报名此地点"+"</th>";
+                    if(data.length>0){
+                        for (var i = 0; i < data.length; i++) {
+                            var j = i + 1;
+                            var row = tb.insertRow(tb.rows.length);
+                            row.innerHTML += "<td>" + j + "</td>";
+
+                            row.innerHTML += "<td>" + data[i].theplace+ "</td>";
+
+                            row.innerHTML += "<td>" + data[i].thetime+ "</td>";
+                            row.innerHTML += "<td>" + data[i].leader+ "</td>";
+//                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='newone(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title='前往员工列表' data-toggle='tooltip'>" +
+//                                " 负责人</button></td>"
+
+                            row.innerHTML += "<td><button id='"+data[i].id+"' onclick='del(this.id)' name='del' type class='btn btn-success  oprate' data-placement='bottom' title=删除该地点' data-toggle='tooltip'>" +
+                                " 报名</button></td>"
+
+//                row.innerHTML += "<td>" + data[i].user.username + "</td>";
+//                row.innerHTML += "<td>" + data[i].time + "</td>";
+                        }
+
+                    }
+                },
+                error: function (data) {
+                    // alert("你还没有你的已办事项")
+                }
+
+
+
+
+			});
+            }
+		</script>
+</body>
+</html> 

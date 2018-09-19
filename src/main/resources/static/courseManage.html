@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Bootstrap Advance Admin Template</title>
+
+    <!-- BOOTSTRAP STYLES-->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="assets/css/font-awesome.css" rel="stylesheet" />
+    <!--CUSTOM BASIC STYLES-->
+    <link href="assets/css/basic.css" rel="stylesheet" />
+    <!--CUSTOM MAIN STYLES-->
+    <link href="assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><i class="fa fa-home"></i>RAIN</a>
+        </div>
+
+        <div class="header-right">
+            <div class="list-inline">
+                <li><input type="text" class="form-control" placeholder="Search"></li>
+                <a href="#" class="btn btn-info" title="New Message"><i class="fa fa-search"></i></a>
+                <a href="#" class="btn btn-danger" title="Logout"><i class="fa fa-exclamation-circle"></i></a>
+            </div>
+
+
+        </div>
+    </nav>
+    <!-- /. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav" id="main-menu">
+                <li>
+                    <a href="#"><i class="fa fa-desktop "></i>课程管理 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="courseManage.html"><i class="fa fa-toggle-on"></i>课程操作</a>
+                        </li>
+                        <li>
+                            <a href="place.html"><i class="fa fa-bell "></i>章节操作</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-circle-o "></i>Tag操作</a>
+                        </li>
+                        <li>
+                            <a href="buttons.html"><i class="fa fa-code "></i>JavaScript基础<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#"><i class="fa fa-toggle-on"></i>jQuery</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-toggle-on"></i>Ajax</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="icons.html"><i class="fa fa-bug "></i>Editor.md使用</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-yelp "></i>后端 <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="invoice.html"><i class="fa fa-coffee"></i>数据库</a>
+                        </li>
+                        <li>
+                            <a href="pricing.html"><i class="fa fa-flash "></i>Sprintboot</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="blank.html"><i class="fa fa-square-o "></i>帮助</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+    <!-- /. NAV SIDE  -->
+    <div id="page-wrapper">
+        <div id="page-inner">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="page-head-line">课程</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#myModal">添加课程</button>
+                    </div>
+
+                </div>
+            </div>
+            <!-- /. ROW  -->
+            <div class="col-md-12" >
+                <div class="table-responsive">
+                    <table id="table1" class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>课程名</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="data_tb">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--/.ROW-->
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+
+<script type="text/html" id="course_data">
+    {{each course_list as value i}}
+    <tr class="tb-tr">
+        <td><input type='checkbox' value='{{value.id}}'/></td>
+        <!--<td>{{value.id}}</td>-->
+        <td>{{value.name}}</td>
+        <td>
+            <a href="place.html?courseid={{value.id}}"><button type='button' class='btn btn-success  oprate' data-placement='bottom' title='管理章节' data-toggle='tooltip'><i class='fa fa-plus fa-1x'></i></button></a>
+        </td>
+    </tr>
+    {{/each}}
+</script>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="POST" id="Form" name="Form" enctype="multipart/form-data" action="/manage/save">
+        <div class="modal-content">
+            <div class="modal-header" style="color: orange">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    新增课程
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon8">课程名</span>
+                    <input id="course" type="text" class="form-control" placeholder="输入课程名">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button -type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <a type="button" class="btn btn-primary" onclick="save()">保存</a>
+            </div>
+        </div><!-- /.modal-content -->
+        </form>
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="assets/js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="assets/js/bootstrap.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="assets/js/jquery.metisMenu.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="assets/js/custom.js"></script>
+
+<script src="js/template.js"></script>
+
+
+<script>
+    $(function () {
+        //加载页面完成时触发
+        loadTableData(0);
+    });
+
+    //加载表格数据
+    function loadTableData(page_num) {
+        $.ajax({
+            url: 'course/courseall',
+            type: 'POST',
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+//                console.log(data);
+                 var html = template('course_data',{course_list:data});
+                 document.getElementById('data_tb').innerHTML = html;
+            }
+        });
+    }
+
+    function save() {
+        $.ajax({
+            url: "course/save",
+            type: "POST",
+            dataType:"json",
+            data: {
+                name:document.getElementById("course").value
+            },
+            success: function (data) {
+                if(data.result == "success"){
+                    window.location.href="courseManage.html";
+                }
+            },
+        });
+    }
+</script>
+
+<script>
+    //弹出框设置隐藏
+    $(function () { $('#myModal').modal('hide')});
+</script>
+
+</body>
+</html>

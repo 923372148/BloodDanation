@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的工作台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<!--<nav class="navbar navbar-inverse navbar-fixed-top">-->
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div  class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand"style="color: white" href="#">XX血液中心无偿献血综合服务平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+                <li id="login"><a href="#" onclick="Login()">登录</a></li>
+                <li id="reg"> <a href="#"onclick="Register()">注册</a></li>
+                <li > <a href="#"onclick="quit()">退出</a></li>
+
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+<div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+        <li class="active"><a href="first.html">我的工作台</a></li>
+        <li><a href="propaganda.html">宣传管理</a></li>
+        <li><a href="#">招募管理</a></li>
+        <li><a href="#">服务管理</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">绩效考核</a></li>
+        <li><a href="#">志愿者管理</a></li>
+        <li><a href="RoleManage.html ">权限管理</a></li>
+        <li><a href="usermanage.html ">用户管理</a></li>
+        <li><a href="#">样式（演示）</a></li>
+    </ul>
+
+
+    <ul id="myTab" class="nav nav-tabs"style="background-color: #c2ede7">
+        <li class="active">
+            <a href="#home" data-toggle="tab">
+                首页
+            </a>
+        </li>
+        <!--<li><a href="#plan" data-toggle="tab">计划管理</a></li>-->
+        <!--<li><a href="#serve" data-toggle="tab">服务事务概览</a></li>-->
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="home">
+            <div class="panel panel-default">
+            <ul id="myTab2" class="nav nav-tabs"style="background-color:  #ecf0f1">
+                <li class="active">
+                    <a href="#todo" data-toggle="tab">
+                        <span class="glyphicon glyphicon-edit"></span>  待办 <span id="todoNum" class="badge">0</span>
+                    </a>
+                </li>
+                <li><a href="#done" data-toggle="tab"><span class="glyphicon glyphicon-check"></span>  已办 <span id="havedoneNum" class="badge">0</span></a></li>
+            </ul>
+            <div id="myTab2Content" class="tab-content">
+                <div class="tab-pane fade in active" id="todo">
+                    <table id="todoTB" class="table table-bordered ">
+                    </table>
+                    <!--<nav style="text-align: center">-->
+                    <!--<ul class="pagination pagination-sm">-->
+                    <!--<li><a href="#">&laquo;</a></li>-->
+                    <!--<li class="active"><a href="#">1</a></li>-->
+                    <!--<li><a href="#">2</a></li>-->
+                    <!--<li><a href="#">3</a></li>-->
+                    <!--<li><a href="#">4</a></li>-->
+                    <!--<li><a href="#">...</a></li>-->
+                    <!--<li><a href="#">15</a></li>-->
+                    <!--<li><a href="#">&raquo;</a></li>-->
+                    <!--</ul>-->
+                    <!--</nav>-->
+                </div>
+                <div class="tab-pane fade" id="done">
+                    <table id="doneTB"class="table table-bordered ">
+                    </table>
+                    <!--<nav style="text-align: center">-->
+                    <!--<ul class="pagination pagination-sm">-->
+                    <!--<li><a href="#">&laquo;</a></li>-->
+                    <!--<li class="active"><a href="#">1</a></li>-->
+                    <!--<li><a href="#">2</a></li>-->
+                    <!--<li><a href="#">3</a></li>-->
+                    <!--<li><a href="#">4</a></li>-->
+                    <!--<li><a href="#">...</a></li>-->
+                    <!--<li><a href="#">15</a></li>-->
+                    <!--<li><a href="#">&raquo;</a></li>-->
+                    <!--</ul>-->
+                    <!--</nav>-->
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <!--<div class="tab-pane fade" id="plan">-->
+            <!--<p>计划管理</p>-->
+        <!--</div>-->
+        <!--<div class="tab-pane fade" id="serve">-->
+            <!--<p>服务事务概览</p>-->
+        <!--</div>-->
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul id="myTab3" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#plans" data-toggle="tab">
+                                <span class="glyphicon glyphicon-tasks"></span>  物资申请
+                            </a>
+                        </li>
+                        <li><a href="#project" data-toggle="tab"><span class="glyphicon glyphicon-list"></span>  我参与的方案 <span class="badge">0</span></a></li>
+                    </ul></div>
+                <div id="myTab3Content" class="tab-content">
+                    <div class="tab-pane fade in active" id="plans">
+                        <div class="table-responsive">
+                            <table id="pass" class="table table-bordered">
+                                <caption id="nopass">已审批的物资申请 <span id="passNum" class="badge">0</span></caption>
+                            </table>
+                            <hr style="height:2px;border-width:0;color:gray;background-color:gray" />
+                            <table id="tocheck" class="table table-bordered">
+                                <caption id="notocheck">待审批的物资申请 <span id="goodsNum" class="badge">0</span></caption>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="project">
+                        <p><a href="programma.html">参与方案</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <ul id="myTab4" class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#information" data-toggle="tab">
+                                <span class="glyphicon glyphicon-envelope"></span>  宣传品资料
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="myTab4Content" class="tab-content">
+                    <div class="tab-pane fade in active" id="information">
+                        <div class="panel panel-default">
+                        <ul id="myTab5" class="nav nav-tabs"style="background-color:  #ecf0f1">
+                            <li class="active">
+                                <a href="#todopromo" data-toggle="tab">待审批 <span id="todoNum3" class="badge">0</span>
+                                </a>
+                            </li>
+                            <li><a href="#donepromo" data-toggle="tab"> 已审批 <span id="havedoneNum3" class="badge">0</span></a></li>
+                        </ul>
+                        <div id="myTab5Content" class="tab-content">
+                            <div class="tab-pane fade in active" id="todopromo">
+                            <table id="todoinfo" class="table table-bordered ">
+                            </table>
+                        </div>
+                            <div class="tab-pane fade" id="donepromo">
+                                <table id="doneinfo" class="table table-bordered ">
+                                </table>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p> </p>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #89b5ed" role="navigation">
+    <div class="container-fluid"style="text-align: center">
+        <div class="nav">
+            <h4>XX血液中心无偿献血综合服务平台</h4>
+        </div>
+    </div>
+</nav>
+<div class="modal" id="mymodal">
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">登录</h4>
+            </div>
+
+            <div class="modal-body" >
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-6">
+                            <input id="input_Lname" type="text" class="form-control"  placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-6">
+                            <input id="input_Lpassword" type="password" class="form-control"  placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">请记住我
+                                </label>
+                                <a class="remb">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="lgbtn"type="submit" class="btn btn-primary">登录</button>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10">
+
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- /.注册的modal -->
+<div class="modal" id="registermodal">
+    <div class="modal-dialog">
+        <div class="modal-content" >
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">注册</h4>
+            </div>
+
+            <div class="modal-body" >
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-6">
+                            <input id="input_Rname" type="text" class="form-control"  placeholder="请输入姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-6">
+                            <input id="input_Rpassword" type="password" class="form-control"  placeholder="请输入密码">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">电话号码</label>
+                        <div class="col-sm-6">
+                            <input id="input_Email" type="text" class="form-control"  placeholder="电话号码">
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox">请记住我
+                                </label>
+                                <a class="remb">忘记密码？</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button id="rebtn"type="submit" class="btn btn-primary">注册</button>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10">
+
+
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+
+    user_id= localStorage.getItem("userid");
+    if(user_id==""||user_id ==null)
+    {
+        alert("请先登录");
+
+
+    }else {
+
+        loadLeafletData();//记载宣传信息的函数
+        loadLeafletDatahavedo();
+        applyforgoods();
+        passforgoods();
+        applypromo();
+        passpromo();
+    }
+    //其他的也可以写了函数之后再那里执行就好
+    function   loadLeafletDatahavedo(){
+        $.ajax({
+            url: "leaflet/finddone",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("havedoneNum").innerHTML = data.length;
+                var tb = document.getElementById("doneTB");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length);
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"类型"+"</th>";
+                    tr.innerHTML+="<th>" +"发送人"+"</th>";
+                    tr.innerHTML+="<th>" +"发送时间"+"</th>";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='IMreview.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].categories[0].kind + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].time + "</td>";
+                }
+
+
+            },
+            error: function (data) {
+                // alert("你还没有你的已办事项")
+            }
+        });
+
+
+    }
+    function   loadLeafletData(){    //待办事项
+        $.ajax({
+            url: "leaflet/findtodo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("todoNum").innerHTML = data.length;
+                var tb = document.getElementById("todoTB");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length);
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"类型"+"</th>";
+                    tr.innerHTML+="<th>" +"发送人"+"</th>";
+                    tr.innerHTML+="<th>" +"发送时间"+"</th>";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='IMreview.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].categories[0].kind + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].time + "</td>";
+
+                }
+
+
+            },
+            error: function (data) {
+                //  alert("你还没有你的待办事项")
+            }
+        });
+
+
+    }
+
+    function applyforgoods() {
+        $.ajax({
+            url: "goods/findtodo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("goodsNum").innerHTML = data.length;
+                var tb = document.getElementById("tocheck");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length)
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"申请人"+"</th>";
+                    tr.innerHTML+="<th>" +"申请时间"+"</th>";
+                    tr.innerHTML+="<th>" +"申请数量"+"</th>";
+                    tr.innerHTML+="<th>" +"使用方向"+"</th>";
+                }else{
+                    document.getElementById("notocheck").innerHTML="暂无未获审批的物资申请";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='宣传物资领用审批.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].time + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].sum + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].usedirection + "</td>";
+
+                }
+
+
+            },
+            error: function (data) {
+                // alert("你还没有待审批的申请")
+            }
+        });
+    }
+    function passforgoods() {
+        $.ajax({
+            url: "goods/finddone",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("passNum").innerHTML = data.length;
+                var tb = document.getElementById("pass");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length)
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"部门"+"</th>";
+                    tr.innerHTML+="<th>" +"申请人"+"</th>";
+                    tr.innerHTML+="<th>" +"申请时间"+"</th>";
+                    tr.innerHTML+="<th>" +"申请数量"+"</th>";
+                    tr.innerHTML+="<th>" +"使用方向"+"</th>";
+                }else{
+                    document.getElementById("nopass").innerHTML="暂无已获审批的物资申请";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='宣传物资领用审批.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].user[0].departmentname + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].time + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].sum + "</td>";
+                    row.innerHTML += "<td>" + data[i].goodss[0].usedirection + "</td>";
+
+                }
+
+
+            },
+            error: function (data) {
+                // alert("你还没有已审批的申请")
+            }
+        });
+    }
+
+    function applypromo() {
+        $.ajax({
+            url: "promo/findtodo",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("todoNum3").innerHTML = data.length;
+                var tb = document.getElementById("todoinfo");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length)
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"申请人"+"</th>";
+                    tr.innerHTML+="<th>" +"申请时间"+"</th>";
+                    tr.innerHTML+="<th>" +"申请数量"+"</th>";
+                    tr.innerHTML+="<th>" +"制作方式"+"</th>";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='宣传品资料制作审批.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].time + "</td>";
+                    row.innerHTML += "<td>" + data[i].sum + "</td>";
+                    row.innerHTML += "<td>" + data[i].makingstyles+"</td>";
+
+                }
+
+
+            },
+            error: function (data) {
+                // alert("你还没有待审批的申请")
+            }
+        });
+    }
+
+    function passpromo() {
+        $.ajax({
+            url: "promo/finddone",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                user_id: user_id
+            },
+            success: function (data) {
+                console.log(data);
+                document.getElementById("havedoneNum3").innerHTML = data.length;
+                var tb = document.getElementById("doneinfo");
+                if(data.length>0){
+                    var tr=tb.insertRow(tb.rows.length)
+                    tr.innerHTML+="<th>" +"NO."+"</th>";
+                    tr.innerHTML+="<th>" +"标题"+"</th>";
+                    tr.innerHTML+="<th>" +"申请人"+"</th>";
+                    tr.innerHTML+="<th>" +"申请时间"+"</th>";
+                    tr.innerHTML+="<th>" +"申请数量"+"</th>";
+                    tr.innerHTML+="<th>" +"制作方式"+"</th>";
+                }
+                for (var i = 0; i < data.length; i++) {
+                    var j = i + 1;
+                    var row = tb.insertRow(tb.rows.length);
+                    row.innerHTML += "<td>" + j + "</td>";
+                    row.innerHTML += "<td>" + "<a href='宣传品资料制作审批.html?id=" + data[i].id + "'>" + data[i].title + "</a>" + "</td>";
+                    row.innerHTML += "<td>" + data[i].user.username + "</td>";
+                    row.innerHTML += "<td>" + data[i].time + "</td>";
+                    row.innerHTML += "<td>" + data[i].sum + "</td>";
+                    row.innerHTML += "<td>" + data[i].makingstyles+"</td>";
+
+                }
+
+
+            },
+            error: function (data) {
+                // alert("你还没有待审批的申请")
+            }
+        });
+    }
+
+
+    var uname= localStorage.getItem("username");   console.log(uname);
+    if( localStorage.getItem("username")!=="") {
+        $("#login").hide();
+        $("#reg").hide();
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+    function quit() {
+
+        localStorage.setItem("username","");
+        localStorage.setItem("userid","");
+        location.reload();
+
+    }
+
+    function Login(){
+        if(user_id!=="")
+        {
+            alert("请先退出");
+
+        }
+        else {
+//            document .getElementById("loginbtn").value=userName ;
+//            $("h4").html(userName );
+            $("#mymodal").modal();
+            $("#lgbtn").bind('click', function () {
+                var userName = $("#input_Lname ").val();
+                var userPassword = $("#input_Lpassword").val();
+
+                var user = {
+                    username: userName,
+                    password: userPassword,
+
+                };
+                console.log(user);
+
+                //遍历
+
+                //遍历
+                if (userName == "" || userPassword == "") {
+                    alert("姓名密码不能为空");
+                }
+                else {
+                    $.ajaxSettings.async = false;
+
+                    $(function () {
+                        $.ajax({
+                            url: "User/regist",
+                            method: "post",
+                            contentType: "application/json;charset=utf-8",
+                            data: JSON.stringify(user),
+                            //    dataType: "json",
+                            // cache:fa lse,
+                            success: function (data) {
+                                console.log(data);
+                                if (data == "4") {
+                                    alert("登录失败。密码错误");
+                                }
+                                if (data == "3") {
+                                    alert("登录失败，用户名不存在");
+                                }
+                                else {
+
+
+                                    localStorage.setItem("username", userName);
+                                    $("#mymodal ").modal('hide');
+                                    document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
+                                    //alert("你的ID为" + data);
+                                    localStorage.setItem("userid", data);
+                                    loadLeafletData();
+
+                                }
+                            },
+                            error: function (data) {
+                                alert("失败，请检查互联网连接")
+                            }
+                        });
+                    })
+                }//else{
+                // alert("标题已经存在");
+                // }
+
+            })
+
+
+        }
+
+
+    };
+    function Register(){
+
+        if(user_id!=="")
+        {
+            alert("请先退出");
+
+        }
+        else {
+            $("#registermodal ").modal();
+
+            $("#rebtn").bind('click', function () {
+                var userName = $("#input_Rname").val();
+                var userPassword = $("#input_Rpassword").val();
+                var userEmail = $("#input_Email").val();
+                var user = {
+                    username: userName,
+                    password: userPassword,
+                    phone: userEmail
+                };
+                console.log(user);
+
+                //遍历
+
+                //遍历
+                if (userName == "" || userPassword == "" || userEmail == "") {
+                    alert("姓名密码EMAIL不能为空");
+                }
+                else {
+                    $.ajaxSettings.async = false;
+
+                    $(function () {
+                        $.ajax({
+                            url: "User/save",
+                            method: "post",
+
+                            contentType: "application/json;charset=utf-8",
+                            data: JSON.stringify(user),
+                            //   dataType: "json",
+                            // cache:fa lse,
+                            success: function (data) {
+                                // geid=data.name;
+                                // geuuid=data.password;
+                                // biaotibianli.push(geid);
+                                alert("稍等");
+
+                                if (data == "1") {
+                                    alert("用户名已存在");
+                                }
+                                else {
+                                    alert("注册成功");
+                                    localStorage.setItem("username", userName);
+                                    loadLeafletData();
+                                    $("#registermodal ").modal('hide');
+                                    document.getElementById("name").innerHTML = "Hi," + userName+" ! ";
+                                    //alert("你的ID为" + data);
+                                    localStorage.setItem("userid", data);
+                                }
+
+
+                            },
+                            error: function (data) {
+
+                            }
+                        });
+                    })
+                }//else{
+                // alert("标题已经存在");
+                // }
+
+            })
+
+
+        }
+
+
+    }
+</script>
+</body>
+</html>
+

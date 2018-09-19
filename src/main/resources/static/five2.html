@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宣传方案查询</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body >
+
+
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: white" href="#">XX血液中心无XX血液中心无偿献血综合服务平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+                <li><a href="#">退出</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+        <li class="active" ><a href="first.html">我的工作台</a></li>
+        <li><a href="propaganda.html">宣传管理</a></li>
+        <li><a href="#">招募管理</a></li>
+        <li><a href="#">服务管理</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">绩效考核</a></li>
+        <li><a href="#">志愿者管理</a></li>
+        <li><a href="RoleManage.html ">权限管理</a></li>
+        <li><a href="usermanage.html ">用户管理</a></li>
+        <li><a href="#">样式（演示）</a></li>
+    </ul>
+
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+                <li class="breadcrumb-item active"> 宣传方案查询</li>
+            </ol>
+        </div>
+        <div class="panel-body">
+            <form class="form-inline">
+                <div class="form-group input-group-sm">
+                    <label for="title">标题：</label>
+                    <input type="text" class="form-control" id="title">
+                </div>
+                <div class="form-group input-group-sm">
+                    <label for="classSelect">方案类别：</label>
+                    <select class="form-control" id="classSelect">
+                        <option selected>全部</option>
+                        <option value="1">固定献血者活动</option>
+                        <option value="2">网络媒体类</option>
+                        <option value="3">新闻稿件类</option>
+                        <option value="4">微博微信类</option>
+                    </select>
+                    <div class="form-group input-group-sm">
+                        <label for="authorName">拟稿人：</label>
+                        <input type="email" class="form-control" id="authorName">
+                    </div>
+                    <div class="form-group input-group-sm">
+                        <label for="createTime">拟稿时间：</label>
+                        <input type="text" class="form-control" id="createTime">
+                    </div>
+                    <!--选择菜单-->
+
+                </div>
+                <div class="form-group input-group-sm">
+                    <label for="stateSelect">状态：</label>
+                    <select class="form-control" id="stateSelect">
+                        <option selected>全部</option>
+                        <option value="1">待审批</option>
+                        <option value="2">执行中</option>
+                        <option value="3">已归档</option>
+                    </select>
+                </div>
+                <div class="btn-group  pull-right" role="group">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-search">查询</span>
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <span class="glyphicon glyphicon-repeat">重置</span>
+                    </button>
+                </div>
+            </form>
+            <br>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-plus-sign">新建</span>
+            </button>
+            <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-minus-sign">删除</span>
+            </button>
+            <br><br>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox">
+                    </th>
+                    <th>NO.</th>
+                    <th>标题</th>
+                    <th>方案类别</th>
+                    <th>拟稿人</th>
+                    <th>拟稿时间</th>
+                    <th>执行时间</th>
+                    <th>完成情况</th>
+                    <th>状态</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <input type="checkbox">
+                    </th>
+                    <td>1</td>
+                    <td>111</td>
+                    <td>111</td>
+                    <td>1111</td>
+                    <td>1111</td>
+                    <td>11111</td>
+                    <td>11111</td>
+                    <td>11111</td>
+                </tr>
+                <tr>
+                    <th scope="row"> <input type="checkbox"></th>
+                    <td>2</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                    <td>222</td>
+                </tr>
+                <tr>
+                    <th scope="row"> <input type="checkbox"></th>
+                    <td>3</td>
+                    <td>333</td>
+                    <td>333</td>
+                    <td>333</td>
+                    <td>333</td>
+                    <td>333</td>
+                    <td>333</td>
+                    <td>333</td>
+                </tr>
+                </tbody>
+            </table>
+            <!--分页 active为当前页 可给不能点击的链接添加 .disabled 类-->
+            <nav style="text-align: center">
+                <ul class="pagination pagination-sm">
+                    <li><a href="#">&laquo;</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">15</a></li>
+                    <li><a href="#">&raquo;</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+
+</body>
+</html>

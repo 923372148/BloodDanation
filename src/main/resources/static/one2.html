@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宣传信息发布查询</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pagelistyle.css">
+
+</head>
+<body>
+
+
+<nav class="navbar navbar-static-top "style="background-color: #89b5ed" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: white" href="#">XX血液中心无XX血液中心无偿献血综合服务平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li id="name"><a href="#">欢迎您</a></li>
+            </ul>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="nav nav-justified"style="background-color: #749bed">
+        <li class="active" ><a href="first.html">我的工作台</a></li>
+        <li><a href="propaganda.html">宣传管理</a></li>
+        <li><a href="#">招募管理</a></li>
+        <li><a href="#">服务管理</a></li>
+        <li><a href="#">统计报表</a></li>
+        <li><a href="#">绩效考核</a></li>
+        <li><a href="#">志愿者管理</a></li>
+        <li><a href="RoleManage.html ">权限管理</a></li>
+        <li><a href="usermanage.html ">用户管理</a></li>
+        <li><a href="#">样式（演示）</a></li>
+    </ul>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="propaganda.html">宣传管理</a></li>
+        <li class="breadcrumb-item active">宣传信息发布查询</li>
+    </ol>
+
+            <form class="form-inline">
+                <div class="form-group input-group-sm">
+                    <label for="input_title">标题：</label>
+                    <input type="text" class="form-control" id="input_title">
+                </div>
+                <div class="form-group input-group-sm">
+                    <label for="input_username">申请人：</label>
+                    <input type="email" class="form-control" id="input_username">
+                </div>
+                <!--
+                <div class="form-group input-group-sm">
+                    <label for="input_time">申请时间：</label>
+                    <input type="text" class="form-control" id="input_time">
+                </div>
+                -->
+                <!--选择菜单-->
+                <div class="form-group input-group-sm">
+                    <label for="classSelect">类别：</label>
+                    <select class="form-control" id="classSelect">
+                        <option selected>所有类别</option>
+                    </select>
+
+                </div>
+                <!--<div class="form-group input-group-sm">-->
+                    <!--<label for="stateSelect">状态：</label>-->
+                    <!--<select class="form-control" id="stateSelect">-->
+                        <!--<option selected>全部</option>-->
+                        <!--<option value="1">待审批</option>-->
+                        <!--<option value="2">执行中</option>-->
+                        <!--<option value="3">已归档</option>-->
+                    <!--</select>-->
+                <!--</div>-->
+                <div class="btn-group  pull-right" role="group">
+                    <button id="search" type="button" class="btn btn-primary btn-sm">
+                        查询
+                    </button>
+                    <button id="clean" type="button" class="btn btn-primary btn-sm">
+                        重置
+                    </button>
+                </div>
+            </form>
+            <br>
+            <button type="button" class="btn btn-default">
+                <a href="宣传信息发布.html"><span class="glyphicon glyphicon-plus-sign">新建</span></a>
+            </button>
+
+            <br><br>
+            <table id="result"class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>NO.</th>
+                    <th>标题</th>
+                    <th>类别</th>
+                    <th>发布媒介</th>
+                    <th>申请人</th>
+                    <th>申请时间</th>
+                    <th>状态</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody id="resultbody">
+
+                </tbody>
+
+            </table>
+            <!--分页 active为当前页 可给不能点击的链接添加 .disabled 类-->
+            <div class="piclist">
+                <div class="fydiv">
+                    <ul class="fenye">
+
+                    </ul>
+                </div>
+            </div>
+</div>
+
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+    var datas;
+    var uname= localStorage.getItem("username");
+    user_id= localStorage.getItem("userid");
+    if(user_id==""||user_id ==null) {
+        alert("请先登录");
+        window.location.href = 'first.html';
+    }
+
+    if( localStorage.getItem("username")!=="") {
+
+        x=document.getElementById("name");
+        x.innerHTML = "Hi," + uname+" ! ";
+        x.style.color="#337ab7";
+    }
+    var flag=1;
+    $.ajax({
+        url: 'leaflet/iduser',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+            id: user_id
+        },
+        cache: false,
+        success: function (data) {
+            console.log(data);
+            //   console.log(data.roles[0].name);
+            for(var i=0;i<data.roles.length;i++) {
+                console.log(data.roles[i].name == "领导");
+
+                if (data.roles[i].name == "领导") {
+                    // document.getElementById("agree").setAttribute("disabled", false);
+                    flag=0;
+
+                    console.log("变")
+
+                }
+            }
+        },
+        error: function (data) {
+
+        }
+    });
+
+
+
+    function del(id) {
+        if(flag!==0){
+            alert ("你不是领导，不能删除")
+        }
+        else {
+            console.log(id);
+            $.ajax({
+                url: 'leaflet/delete',
+                type: 'POST',
+                dataType: 'json',
+                // contentType: "application/json;charset=utf-8",
+                data: {
+                    id: id,
+                },
+                cache: false,
+                success: function (data) {
+                    window.location.reload();
+
+                },
+                error: function (data) {
+
+                }
+            })
+        }
+    }
+
+    $(function() {
+        //显示全部
+        $.ajax({
+            url: "leaflet/findall",
+            method: "post",
+            // dataType: "json",
+            // cache:fa lse,
+            success: function (data) {
+                console.log(data);
+                //  document.getElementById("Num").innerHTML=data.length;
+                var tb = document.getElementById("result");
+                for (var i = 0; i <data.length ; i++) {
+                    datas=data;
+                    getPage(1);
+
+                }
+            },
+            error: function (data) {
+                alert("失败，请检查互联网连接")
+            }
+        });
+        //读取类别 修改url
+        $.ajax({
+            url: "leaflet/findallcategories",
+            method: "post",
+            // dataType: "json",
+            // cache:fa lse,
+            success: function (data) {
+                console.log(data);
+                //  document.getElementById("Num").innerHTML=data.length;
+                var t = document.getElementById("classSelect");
+                for (var i = 0; i <data.length ; i++) {
+                    var j=i+1;
+                    t.innerHTML += " <option value='"+data[i].kind+"'>" + data[i].kind+"</option>";
+                }
+            },
+            error: function (data) {
+                alert("失败，请检查互联网连接")
+            }
+        });
+
+
+
+
+        //查询
+        $("#search").bind('click',function (){
+            var title=$("#input_title").val();
+            var username=$("#input_username").val();
+
+            var kind=document.getElementById("classSelect").value;
+//            var status=$("#stateSelect").val();
+            title=$.trim(title);
+            username=$.trim(username);
+//            status=$.trim(status);
+
+            var searchim={
+                title:title,
+                username:username,
+                //     time:time,
+                kind:kind
+                //  status:status
+            };
+            console.log(searchim);
+            //遍历
+            $.ajax({
+                url: 'leaflet/searchbysomething',
+                type: 'POST',
+                dataType: 'json',
+                // contentType: "application/json;charset=utf-8",
+                data:{
+                    title:title,
+                    username:username,
+                    kind:kind
+                },
+                cache:false,
+                success : function(data) {
+                    $("#result tr:not(:first)").empty();
+                    datas=data;
+                    getPage(1);
+
+                },
+                error: function (data) {
+                    alert(" 没有结果")
+                }
+            })
+        });
+
+
+
+
+
+
+
+
+        $("#clean").bind('click',function (){
+            $("#input_title").val("");
+            $("#input_username").val("");
+            $("#input_time").val("");
+            $("#classSelect").val("所有类别");
+//            $("#stateSelect").val("全部");
+        })
+
+    });
+    //当前页的表格
+    function getPage(pn){
+        var dataCount=datas.length;//总数据条数
+        var pageSize=8;//每页显示条数
+        var pageCount= Math.ceil(dataCount / pageSize);//总页数
+        if(pn==0||pn>pageCount){
+            return;
+        }
+        paintPage(pageCount,pn);   //绘制页码
+        var startPage = pageSize * (pn - 1);
+        var tb = document.getElementById("result");
+        $("#result tr:not(:first)").empty();
+        if (pageCount == 1) {     // 当只有一页时
+            for (var j = 0; j < dataCount; j++) {
+                var k = j + 1;
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<th>" + k + "</th>";
+                row.innerHTML += "<td>" +"<a href='IMreview.html?id="+datas[j].id+"'>"+datas[j].title +"</a>"+ "</td>";
+                row.innerHTML += "<td>" + datas[j].categories[0].kind + "</td>";
+                row.innerHTML += "<td>" + datas[j].vehicle + "</td>";//发布媒介
+                row.innerHTML += "<td>" + datas[j].user.username +"</td>";
+                row.innerHTML += "<td>" + datas[j].time + "</td>";
+                row.innerHTML += "<td>" + datas[j].status + "</td>";//状态
+                row.innerHTML += "<td><button id='"+datas[j].id+"' onclick='del(this.id)' name='del' type='button' class='btn btn-default'> <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+            }
+        }else {      // 当超过一页时
+            $("#result tr:not(:first)").empty();
+            var endPage = pn<pageCount?pageSize * pn:dataCount;
+            for (var j = startPage; j < endPage; j++) {
+                var k = j + 1;
+                var row = tb.insertRow(tb.rows.length);
+                row.innerHTML += "<th>" + k + "</th>";
+                row.innerHTML += "<td>" +"<a href='IMreview.html?id="+datas[j].id+"'>"+datas[j].title +"</a>"+ "</td>";
+                row.innerHTML += "<td>" + datas[j].categories[0].kind + "</td>";
+                row.innerHTML += "<td>" + datas[j].vehicle + "</td>";//发布媒介
+                row.innerHTML += "<td>" + datas[j].user.username +"</td>";
+                row.innerHTML += "<td>" + datas[j].time + "</td>";
+                row.innerHTML += "<td>" + datas[j].status + "</td>";//状态
+                row.innerHTML += "<td><button id='"+datas[j].id+"' onclick='del(this.id)' name='del' type='button' class='btn btn-default'> <span class='glyphicon glyphicon-minus-sign'>删除</span> </button></td>"
+            }
+        }
+    }
+
+    function paintPage(number,currNum)  //number 总页数,currNum 当前页
+    {
+        var pageUl=$(".fenye");
+        pageUl.empty();
+        var ulDetail="";
+
+        if(number==1){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:void(0)\">上一页</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:void(0)\">下一页</a></li>";
+        }else if(number==2){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage(1)\">上一页</a></li>"+
+                "<li class=\"numb"+choosele(currNum,1)+"\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"numb"+choosele(currNum,2)+"\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage(2)\">下一页</a></li>";
+        }else if(number==3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb"+choosele(currNum,1)+"\"><a href=\"javascript:getPage(1)\">1</a></li>"+
+                "<li class=\"numb"+choosele(currNum,2)+"\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"numb"+choosele(currNum,3)+"\"><a href=\"javascript:getPage(3)\">3</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">下一页</a></li>";
+        }else if(number==currNum&&currNum>3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-2)+")\">"+parseInt(currNum-2)+"</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">"+parseInt(currNum-1)+"</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage("+currNum+")\">"+currNum+"</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+currNum+")\">下一页</a></li>";
+        }else if(currNum==1&&number>3){
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:void(0)\">上一页</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:void(0)\">1</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage(2)\">2</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage(3)\">3</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage(2)\">下一页</a></li>";
+        }else{
+            ulDetail= "<li class=\"prev\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">上一页</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum-1)+")\">"+parseInt(currNum-1)+"</a></li>"+
+                "<li class=\"numb choose\"><a href=\"javascript:getPage("+currNum+")\">"+currNum+"</a></li>"+
+                "<li class=\"numb\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">"+parseInt(currNum+1)+"</a></li>"+
+                "<li class=\"next\"><a href=\"javascript:getPage("+parseInt(currNum+1)+")\">下一页</a></li>";
+        }
+
+        $(".fenye").append(ulDetail);
+
+    }
+
+    function choosele(num,cur){
+        if(num==cur){
+            return " choose";
+        }else{
+            return "";
+        }
+    }
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
