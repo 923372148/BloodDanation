@@ -1,5 +1,6 @@
 # BloodDanation
-基于Springboot的献血服务系统
+####技术栈
+Springboot+MySql+Bookstrap（前端）
 
 #### 演示地址1：
 [网站首页](https://923372148.github.io/BloodDanation/src/main/resources/static/index.html)
